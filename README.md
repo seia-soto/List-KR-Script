@@ -1,5 +1,5 @@
-### NamuPowerAd Blocker
-NamuPowerAd Blocker blocks the PowerLink advertisement on a document of namu.wiki.
+### List-KR Script
+List-KR Script blocks complicated advertisement to block on NamuWiki, ad-shield-protected website, etc. 
 
 ### Quick Start
 Just click the following URL to detect this userscript.
