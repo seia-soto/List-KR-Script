@@ -1,5 +1,5 @@
 ### List-KR Script
-List-KR Script blocks complicated advertisement to block on NamuWiki, ad-shield-protected website, etc. 
+List-KR Script blocks complicated advertisement to block on NamuWiki, website protected by ad-shield, etc.
 
 ### Quick Start
 Just click the following URL to detect this userscript.
@@ -7,7 +7,7 @@ Just click the following URL to detect this userscript.
 https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
 
 ### How to install
-- [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) - Browser extension
+- [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)[^Compatibility] - Browser extension
     1. Open settings of Tampermonkey.
     2. Go to `Utilities` tab.
     3. Input the following URL into `Install from URL`:
@@ -36,3 +36,5 @@ https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
         ```
     4. Touch `Next`.
     5. Confirm metadata of the userscript and touch `Add`.
+
+[^Compatibility]: Tampermonkey will be hard to use on Google Chrome, Microsoft Edge, Naver Whale and other Chromium-based browser because of Manifest V3 announcement of Google. However, an ad-blocker like AdGuard and uBlock Origin will be unable to install on them because of the same reason. [ZdNet](https://www.zdnet.com/article/chrome-api-update-will-kill-a-bunch-of-other-extensions-not-just-ad-blockers/) [AdGuard](https://adguard.com/en/blog/manifestv3-timeline.html) [9to5google](https://9to5google.com/2019/01/29/chrome-manifest-v3-tampermonkey/) [BleepingComputer 1](https://www.bleepingcomputer.com/news/google/tampermonkey-may-be-the-next-victim-of-googles-chrome-manifest-v3-changes/) [BleepingComputer 2](https://www.bleepingcomputer.com/news/security/chrome-extension-manifest-v3-may-break-ublock-origin-content-blocker/) [Tampermonkey](https://github.com/Tampermonkey/tampermonkey/issues/644)
