@@ -1,0 +1,10 @@
+name: Blank page
+title: ""
+body:
+
+  - type: textarea
+    id: user
+    attributes:
+      label: "Content"
+    validations:
+      required: true

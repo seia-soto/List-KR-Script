@@ -1,0 +1,57 @@
+name: inven.co.kr
+description: Create new request that blocks an advertisement on Inven.
+title: "AD: "
+labels: ["Advertisement", "Ad-Shield"]
+body:
+
+  - type: textarea
+    id: issue_url
+    attributes:
+      label: "URL"
+      description: "Please write a URL (or URLs) that has an same issue and do NOT attach any file."
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: browser
+    attributes:
+      label: "Browser"
+      description: "What is a browser (or browsers) that the issue is occurred in?"
+      multiple: true
+      options:
+        - Mozilla Firefox
+        - Google Chrome
+        - Microsoft Edge
+        - Naver Whale
+        - Apple Safari
+        - Samsung Internet
+        - Opera
+        - Vivaldi
+        - Brave
+        - (Other)
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "Platform"
+      description: "What is an platform that the issue is occurred with?"
+      multiple: true
+      options:
+        - Tampermonkey
+        - Greasemonkey
+        - AdGuard for Windows
+        - AdGuard for Android
+        - AdGuard for Mac
+        - uBlock Origin
+        - (Other)
+    validations:
+      required: true
+
+  - type: textarea
+    id: comment
+    attributes:
+      label: "Comment"
+    validations:
+      required: false
