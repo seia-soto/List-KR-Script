@@ -1,3 +1,9 @@
+# Code ownership information.
+# See https://help.github.com/articles/about-codeowners/
+# for more info about CODEOWNERS file
+
+
 # Common Protection
-/List-KR-Script.user.js @List-KR/script-admin
-/LICENSE @List-KR/script-admin
+/.github/CODEOWNERS                       @List-KR/script-admin 
+/List-KR-Script.user.js                   @List-KR/script-admin
+/LICENSE                                  @List-KR/script-admin
