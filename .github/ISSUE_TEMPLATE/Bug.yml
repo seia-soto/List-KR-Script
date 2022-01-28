@@ -1,4 +1,4 @@
-name: namu.wiki
+name: Bug
 description: Create new request that resolve a bug.
 title: "Bug: "
 labels: ["Bug"]
