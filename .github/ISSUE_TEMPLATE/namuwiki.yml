@@ -60,7 +60,6 @@ body:
         - label: SOCKS4
         - label: SOCKS5
         - label: No. I cannot.
-        - required: true
 
   - type: textarea
     id: comment
