@@ -4,6 +4,6 @@
 
 
 # Common Protection
-/.github/CODEOWNERS                       @List-KR/script-admin 
-/List-KR-Script.user.js                   @List-KR/script-admin
-/LICENSE                                  @List-KR/script-admin
+/.github/CODEOWNERS                       @piquark6046 @Raiden-Ei
+/List-KR-Script.user.js                   @piquark6046 @Raiden-Ei
+/LICENSE                                  @piquark6046 @Raiden-Ei
