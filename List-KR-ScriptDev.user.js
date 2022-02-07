@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d4
+// @version      1.0d5
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -161,22 +161,22 @@ const LKSLib =
 switch (LKSLib.location)
 {
     // namu.wiki
-    case new RegExp("\/\/namu\.wiki\/"):
+    case new RegExp("(^\\s*):\/\/namu\.wiki\/(\\s*$)"):
 
     break;
 
     // inven.co.kr
-    case new RegExp("\/\/.{1,}\.inven\.co\.kr\/"):
+    case new RegExp("(^\\s*):\/\/.{1,}\.inven\.co\.kr\/(\\s*$)"):
 
     break;
     
     // ygosu.com
-    case new RegExp("\/\/ygosu\.com\/"):
+    case new RegExp("(^\\s*):\/\/ygosu\.com\/(\\s*$)"):
 
     break;
 
     // ppss.kr
-    case new RegExp("\/\/ppss\.kr\/"):
+    case new RegExp("(^\\s*):\/\/ppss\.kr\/(\\s*$)"):
 
     break;
 };
