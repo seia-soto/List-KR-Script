@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d2
+// @version      1.0d3
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -37,7 +37,7 @@ const LKSConstant =
     NamuWikiArticleElement: "div.namuwiki-toc-ad",
     NamuWiki
 };
-const LKSDebug = 
+const LKSDebug =
 {
     Error: function(Name, Context)
     {
@@ -46,7 +46,7 @@ const LKSDebug =
         throw e;
     }
 }
-const LKSLib = 
+const LKSLib =
 {
     window: typeof unsafeWindow == "undefined" ? window : unsafeWindow,
     MutationObserver: LKSLib.window.MutationObserver,
@@ -59,22 +59,28 @@ const LKSLib =
         {
             return LKSLib.SearchElementHasStyles(Array.from(Elements), HasStyleArray);
         }
+        
+        return ReturnArray;
+    },
+    SearchElementHasStyle: function(ElementType, HasStyle)
+    {
+        var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
+        if (NodeList.prototype.isPrototypeOf(Elements))
+        {
+            return LKSLib.SearchElementHasStyle(Array.from(Elements), HasStyle);
+        }
         for (var i in Elements)
         {
-            if (Elements[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == "")
-            {
-                continue;
-            }
             if (Elements[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
             {
                 ReturnArray.push(Elements[i]);
             }
         }
-        return ReturnArray;    
+        return ReturnArray;
     },
-    CheckElementHasStyles: function(ElementType, HasStyleArray) 
+    CheckElementHasStyles: function(ElementType, HasStyleArray)
     {
-        
+
     },
     CheckElementHasStyle: function(Elements, HasStyle)
     {
@@ -98,7 +104,7 @@ const LKSLib =
     },
     CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist.
     {
-        
+
     },
     CheckHasAncestorElement: function(ParentElement, TargetElement)
     {
@@ -154,12 +160,12 @@ switch (LKSLib.location)
 {
     // namu.wiki
     case new RegExp("\/\/namu\.wiki\/"):
-    
+
     break;
 
     // inven.co.kr
     case new RegExp("\/\/.{1,}\.inven\.co\.kr\/"):
-        
+
     break;
     
     // ygosu.com
