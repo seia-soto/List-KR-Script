@@ -11,6 +11,18 @@ body:
       description: "Please write a URL (or URLs) that has an same issue and do NOT attach any file."
     validations:
       required: true
+
+  - type: dropdown
+    id: channel
+    attributes:
+      label: "Channel"
+      description: "What is the channel of List-KR Script that occurs the issue?"
+      multiple: true
+      options:
+        - Standard
+        - Beta
+    validations:
+      required: true
   
   - type: dropdown
     id: browser
