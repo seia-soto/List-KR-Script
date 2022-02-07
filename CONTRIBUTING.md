@@ -7,7 +7,7 @@ PiQuark6046 - piquark6046@protonmail.com
 Of course, you should follow List-KR Script Contributing Guidelines.
 ### List-KR Script Contributing Guidelines
 - Every contributors must not share an user's private information to anyone **excluding** other contributors of List-KR without their permission.
-- Every contributors respect an user's privacy.
+- Every contributors must respect an user's privacy.
 - All commit that is pushed to master branch must be signed.
 - Your email must be public.
 - Publishing your OpenPGP public key is recommended.
@@ -25,3 +25,9 @@ Of course, you should follow List-KR Script Contributing Guidelines.
 3. Go to yours forked from List-KR/List-KR-Script. For example, if your GitHub username is `DaycareEndorphinWalnut`, please go to https://github.dev/DaycareEndorphinWalnut/List-KR-Script.
 4. Commit the changes that you want to contribute.
 5. Open a new pull request.
+
+## Recommended Visual Studio Code Extensions
+ - [Adblock/AdGuard/uBlock filters grammar](https://marketplace.visualstudio.com/items?itemName=adguard.adblock)
+ - [JavaScript and TypeScript Nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
+ - [UserScript](https://marketplace.visualstudio.com/items?itemName=adpyke.vscode-userscript)
+ - [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
