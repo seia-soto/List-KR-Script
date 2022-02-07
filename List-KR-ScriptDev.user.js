@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d3
+// @version      1.0d4
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -34,8 +34,10 @@
 const LKSConstant =
 {
     StyleSplitKey: ": ",
-    NamuWikiArticleElement: "div.namuwiki-toc-ad",
-    NamuWiki
+    NamuWiki:
+    {
+        ArticleElement: "div.namuwiki-toc-ad", PowerLinkHeaderArray: []
+    }
 };
 const LKSDebug =
 {
