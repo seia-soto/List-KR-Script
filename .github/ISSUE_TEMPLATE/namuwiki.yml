@@ -74,7 +74,7 @@ body:
         - label: No. I cannot.
 
   - type: checkboxes
-    id: proxysupport
+    id: remoteaccess
     attributes:
       label: Remote Access for reproduction
       description: It helps the contributors .
