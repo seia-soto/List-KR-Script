@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d7
+// @version      1.0d8
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -101,10 +101,6 @@ const LKSLib =
         }
         for (var i in Elements)
         {
-            if (Elements[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == "")
-            {
-                continue;
-            }
             if (Elements[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
             {
                 ReturnArray.push(Elements[i]);
