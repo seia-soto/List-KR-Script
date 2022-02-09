@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d10
+// @version      1.0d11
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -81,27 +81,27 @@ const LKSLib =
         }
         return LKSLib.CheckElementHasStyle(Elements, HasStyle);
     },
-    CheckElementHasStyles: function(Elements, HasStyleArray)
+    CheckElementHasStyles: function(Element, HasStyleArray)
     {
         var ReturnArray = [];
-        if (NodeList.prototype.isPrototypeOf(Elements))
+        if (NodeList.prototype.isPrototypeOf(Element))
         {
-            return LKSLib.CheckElementHasStyles(Array.from(Elements), HasStyleArray);
+            return LKSLib.CheckElementHasStyles(Array.from(Element), HasStyleArray);
         }
         
     },
-    CheckElementHasStyle: function(Elements, HasStyle)
+    CheckElementHasStyle: function(Element, HasStyle)
     {
         var ReturnArray = [];
-        if (NodeList.prototype.isPrototypeOf(Elements))
+        if (NodeList.prototype.isPrototypeOf(Element))
         {
-            return LKSLib.CheckElementHasStyle(Array.from(Elements), HasStyle);
+            return LKSLib.CheckElementHasStyle(Array.from(Element), HasStyle);
         }
-        for (var i in Elements)
+        for (var i in Element)
         {
-            if (Elements[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
+            if (Element[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
             {
-                ReturnArray.push(Elements[i]);
+                ReturnArray.push(Element[i]);
             }
         }
         return ReturnArray;
