@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d11
+// @version      1.0d12
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -92,19 +92,18 @@ const LKSLib =
     },
     CheckElementHasStyle: function(Element, HasStyle)
     {
-        var ReturnArray = [];
-        if (NodeList.prototype.isPrototypeOf(Element))
+        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
         {
-            return LKSLib.CheckElementHasStyle(Array.from(Element), HasStyle);
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Element, but not an object.");
         }
-        for (var i in Element)
+        if (Element.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
         {
-            if (Element[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
-            {
-                ReturnArray.push(Element[i]);
-            }
+            return true;
         }
-        return ReturnArray;
+        else
+        {
+            return false;
+        }
     },
     CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist. Returns bool type.
     {
