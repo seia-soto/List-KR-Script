@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d9
+// @version      1.0d10
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -62,7 +62,7 @@ const LKSLib =
     MutationObserver: LKSLib.window.MutationObserver,
     MutationRecord: LKSLib.window.MutationRecord,
     location: LKSLib.window.location,
-    SearchElementHasStyles: function(ElementType, HasStyleArray) // ElementType support string, NodeList, Array. Elments of returned array have all each HasStyleArray.
+    SearchElementsHasStyles: function(ElementType, HasStyleArray) // ElementType support string, NodeList, Array. Elments of returned array have all each HasStyleArray.
     {
         var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
         if (NodeList.prototype.isPrototypeOf(Elements))
@@ -72,7 +72,7 @@ const LKSLib =
         
         return ReturnArray;
     },
-    SearchElementHasStyle: function(ElementType, HasStyle)
+    SearchElementsHasStyle: function(ElementType, HasStyle)
     {
         var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType;
         if (NodeList.prototype.isPrototypeOf(Elements))
@@ -81,17 +81,14 @@ const LKSLib =
         }
         return LKSLib.CheckElementHasStyle(Elements, HasStyle);
     },
-        {
-            if (Elements[i].style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
-            {
-                ReturnArray.push(Elements[i]);
-            }
-        }
-        return ReturnArray;
-    },
-    CheckElementHasStyles: function(ElementType, HasStyleArray)
+    CheckElementHasStyles: function(Elements, HasStyleArray)
     {
-
+        var ReturnArray = [];
+        if (NodeList.prototype.isPrototypeOf(Elements))
+        {
+            return LKSLib.CheckElementHasStyles(Array.from(Elements), HasStyleArray);
+        }
+        
     },
     CheckElementHasStyle: function(Elements, HasStyle)
     {
@@ -109,7 +106,7 @@ const LKSLib =
         }
         return ReturnArray;
     },
-    CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist.
+    CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist. Returns bool type.
     {
 
     },
