@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d12
+// @version      1.0d13
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -83,12 +83,18 @@ const LKSLib =
     },
     CheckElementHasStyles: function(Element, HasStyleArray)
     {
-        var ReturnArray = [];
-        if (NodeList.prototype.isPrototypeOf(Element))
+        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
         {
-            return LKSLib.CheckElementHasStyles(Array.from(Element), HasStyleArray);
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyles", "Received Element, but not an object.");
         }
-        
+        for (var i in HasStyleArray)
+        {
+            if (LKSLib.CheckElementHasStyle(Element, HasStyleArray[i]) == false)
+            {
+                return false;
+            }
+        }
+        return true;
     },
     CheckElementHasStyle: function(Element, HasStyle)
     {
