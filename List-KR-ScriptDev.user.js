@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d13
+// @version      1.0d14
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -62,6 +62,36 @@ const LKSLib =
     MutationObserver: LKSLib.window.MutationObserver,
     MutationRecord: LKSLib.window.MutationRecord,
     location: LKSLib.window.location,
+    CheckElementHasStyle: function(Element, HasStyle)
+    {
+        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Element, but not an object.");
+        }
+        if (Element.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    },
+    CheckElementHasStyles: function(Element, HasStyleArray)
+    {
+        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyles", "Received Element, but not an object.");
+        }
+        for (var i in HasStyleArray)
+        {
+            if (LKSLib.CheckElementHasStyle(Element, HasStyleArray[i]) == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    },
     SearchElementsHasStyles: function(ElementType, HasStyleArray) // ElementType support string, NodeList, Array. Elments of returned array have all each HasStyleArray.
     {
         var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
@@ -80,36 +110,6 @@ const LKSLib =
             return LKSLib.SearchElementHasStyle(Array.from(Elements), HasStyle);
         }
         return LKSLib.CheckElementHasStyle(Elements, HasStyle);
-    },
-    CheckElementHasStyles: function(Element, HasStyleArray)
-    {
-        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
-        {
-            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyles", "Received Element, but not an object.");
-        }
-        for (var i in HasStyleArray)
-        {
-            if (LKSLib.CheckElementHasStyle(Element, HasStyleArray[i]) == false)
-            {
-                return false;
-            }
-        }
-        return true;
-    },
-    CheckElementHasStyle: function(Element, HasStyle)
-    {
-        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
-        {
-            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Element, but not an object.");
-        }
-        if (Element.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     },
     CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist. Returns bool type.
     {
