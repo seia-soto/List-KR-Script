@@ -37,4 +37,12 @@ https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
     4. Touch `Next`.
     5. Confirm metadata of the userscript and touch `Add`.
 
+
+ - AdGuard for iOS
+
+    Userscript is not supported currently on AdGuard for iOS.
+    However, It will be supported in the future.[^2]
+
+
 [^1]: Tampermonkey will be unabled/hard to use on Google Chrome, Microsoft Edge, Naver Whale and other Chromium-based browser because of Manifest V3 announcement of Google. And, an ad-blocker like AdGuard and uBlock Origin will be the same. Please consider transferring to Mozilla Firefox ([English](https://www.mozilla.org/en-US/firefox/download/thanks/) [Korean](https://www.mozilla.org/ko/firefox/download/thanks/)) or purchasing AdGuard installable program. [ZdNet](https://www.zdnet.com/article/chrome-api-update-will-kill-a-bunch-of-other-extensions-not-just-ad-blockers/) [AdGuard](https://adguard.com/en/blog/manifestv3-timeline.html) [9to5google](https://9to5google.com/2019/01/29/chrome-manifest-v3-tampermonkey/) [BleepingComputer 1](https://www.bleepingcomputer.com/news/google/tampermonkey-may-be-the-next-victim-of-googles-chrome-manifest-v3-changes/) [BleepingComputer 2](https://www.bleepingcomputer.com/news/security/chrome-extension-manifest-v3-may-break-ublock-origin-content-blocker/) [Tampermonkey](https://github.com/Tampermonkey/tampermonkey/issues/644)
+[^2]: https://github.com/AdguardTeam/AdguardForiOS/issues/1542
