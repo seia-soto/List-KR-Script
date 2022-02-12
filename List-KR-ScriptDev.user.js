@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d19
+// @version      1.0d20
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -174,8 +174,10 @@ const LKSLib =
         {
             LKSDebug.Error("LISTKRSCRIPT.LKSLib.CreateInvisibleElement", "Received ParentElement, but not an array or NodeList.");
         }
-        var Random = new Chance(window.crypto.getRandomValues(new Int32Array(1)));
-        var RandomElement = ParentElement.createElement("div#" + Random.string({ length: IDLength, pool: LKSConstant.Random.Seed }));
+        var RandomElement = ParentElement.createElement("div#" + chance.string({ length: IDLength, pool: LKSConstant.Random.Seed }));
+        RandomElement.style.width = "0px";
+        RandomElement.style.height = "0px";
+        RandomElement.style.display = "none";
         for (var i in CoverElementsArray)
         {
             RandomElement.appendChild(CoverElementsArray[i]);
