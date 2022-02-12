@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d18
+// @version      1.0d19
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -28,7 +28,10 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-start
+// @require      https://chancejs.com/chance.min.js
 // ==/UserScript==
+// Used Open Source Projects:
+// Chancejs ( https://github.com/chancejs/chancejs )
 
 'use strict';
 const LKSConstant =
@@ -45,6 +48,10 @@ const LKSConstant =
     AdShield:
     {
         
+    },
+    Random:
+    {
+        Seed: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     }
 };
 const LKSDebug =
@@ -151,6 +158,27 @@ const LKSLib =
         for (var i in ElementArray)
         {
             ElementArray[i].style.display = "none";
+        }
+    },
+    CreateInvisibleElement: function(ParentElement, CoverElementsArray, IDLength)
+    {
+        if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CreateInvisibleElement", "Received ParentElement, but not an object.");
+        }
+        if (NodeList.prototype.isPrototypeOf(CoverElementsArray))
+        {
+            return LKSLib.CreateInvisibleElement(ParentElement, Array.from(CoverElementsArray));
+        }
+        else if (typeof CoverElementsArray == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CreateInvisibleElement", "Received ParentElement, but not an array or NodeList.");
+        }
+        var Random = new Chance(window.crypto.getRandomValues(new Int32Array(1)));
+        var RandomElement = ParentElement.createElement("div#" + Random.string({ length: IDLength, pool: LKSConstant.Random.Seed }));
+        for (var i in CoverElementsArray)
+        {
+            RandomElement.appendChild(CoverElementsArray[i]);
         }
     },
     ConvertImageURLToBase64: function(ImageURL)
