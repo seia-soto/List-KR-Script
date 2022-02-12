@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d20
+// @version      1.0d21
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -28,7 +28,7 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-start
-// @require      https://chancejs.com/chance.min.js
+// @require      https://chancejs.com/chance.js
 // ==/UserScript==
 // Used Open Source Projects:
 // Chancejs ( https://github.com/chancejs/chancejs )
