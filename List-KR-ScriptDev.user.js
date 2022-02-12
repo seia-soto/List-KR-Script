@@ -3,12 +3,12 @@
 // @encoding     utf-8
 // @namespace    https://github.com/List-KR/List-KR-Script
 // @homepageURL  https://github.com/List-KR/List-KR-Script
-// @supportURL   https://github.com/List-KR/List-KR-Script/issues
+// @supportURL   https://github.com/List-KR/List-KR-Script/issues/4
 // @updateURL    https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d15
+// @version      1.0d16
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        *://namu.wiki/w/*
