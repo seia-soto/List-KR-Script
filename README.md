@@ -19,12 +19,13 @@ https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
 - AdGuard for Windows
     1. Click `Settings`.
     2. Click `Extensions`.
-    3. Input the following URL:
+    3. Click `Add extension`.
+    4. Input the following URL:
         ```
         https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
         ```
-    4. Click `Install`.
-    5. Confirm metadata of the userscript and click `Install`.
+    5. Click `Install`.
+    6. Confirm metadata of the userscript and click `Install`.
 
 
 - AdGuard for Android
