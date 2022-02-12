@@ -8,8 +8,8 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d16
-// @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
+// @version      1.0d17
+// @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
 // @match        *://*.inven.co.kr/*
