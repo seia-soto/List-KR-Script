@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d17
+// @version      1.0d18
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -62,13 +62,13 @@ const LKSLib =
     MutationObserver: LKSLib.window.MutationObserver,
     MutationRecord: LKSLib.window.MutationRecord,
     location: LKSLib.window.location,
-    CheckElementHasStyle: function(Element, HasStyle)
+    CheckElementHasStyle: function(Elementv, HasStyle)
     {
-        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
+        if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
         {
-            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Element, but not an object.");
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Elementv, but not an object.");
         }
-        if (Element.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
+        if (Elementv.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
         {
             return true;
         }
@@ -77,15 +77,15 @@ const LKSLib =
             return false;
         }
     },
-    CheckElementHasStyles: function(Element, HasStyleArray)
+    CheckElementHasStyles: function(Elementv, HasStyleArray)
     {
-        if (NodeList.prototype.isPrototypeOf(Element) || Array.isArray(Element) || typeof Element == "string")
+        if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
         {
-            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyles", "Received Element, but not an object.");
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyles", "Received Elementv, but not an object.");
         }
         for (var i in HasStyleArray)
         {
-            if (LKSLib.CheckElementHasStyle(Element, HasStyleArray[i]) == false)
+            if (LKSLib.CheckElementHasStyle(Elementv, HasStyleArray[i]) == false)
             {
                 return false;
             }
