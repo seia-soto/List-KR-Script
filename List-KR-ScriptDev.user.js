@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d23
+// @version      1.0d24
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -37,6 +37,12 @@
 const LKSConstant =
 {
     StyleSplitKey: ": ",
+    CreateInvisibleElement:
+    {
+        Styles: ["width", "height", "display", "visibility"],
+        RandomElement: ["0px", "0px", "none", "collapse"],
+        CoverElement: ["", "", "", ""]
+    },
     NamuWiki:
     {
         ArticleElement: "div.namuwiki-toc-ad", 
@@ -175,11 +181,16 @@ const LKSLib =
             LKSDebug.Error("LISTKRSCRIPT.LKSLib.CreateInvisibleElement", "Received ParentElement, but not an array or NodeList.");
         }
         var RandomElement = ParentElement.createElement("div#" + chance.string({ length: IDLength, pool: LKSConstant.Random.String }));
-        RandomElement.style.width = "0px";
-        RandomElement.style.height = "0px";
-        RandomElement.style.display = "none";
+        for (var i in LKSConstant.CreateInvisibleElement.Styles)
+        {
+            RandomElement.style[LKSConstant.CreateInvisibleElement.Styles[i]] = LKSConstant.CreateInvisibleElement.RandomElement[i];
+        }
         for (var i in CoverElementsArray)
         {
+            for (var j in LKSConstant.CreateInvisibleElement.Styles)
+            {
+                CoverElementsArray[i].style[LKSConstant.CreateInvisibleElement.Styles[j]] = LKSConstant.CreateInvisibleElement.CoverElement[j];
+            }
             RandomElement.appendChild(CoverElementsArray[i]);
         }
     },
