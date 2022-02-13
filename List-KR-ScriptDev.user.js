@@ -191,7 +191,7 @@ const LKSLib =
             {
                 if (LKSConstant.CreateInvisibleElement.CoverElement[j] != null)
                 {
-                CoverElementsArray[i].style[LKSConstant.CreateInvisibleElement.Styles[j]] = LKSConstant.CreateInvisibleElement.CoverElement[j];
+                    CoverElementsArray[i].style[LKSConstant.CreateInvisibleElement.Styles[j]] = LKSConstant.CreateInvisibleElement.CoverElement[j];
                 }
             }
             RandomElement.appendChild(CoverElementsArray[i]);
