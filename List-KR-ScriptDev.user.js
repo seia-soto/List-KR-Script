@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d24
+// @version      1.0d25
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -189,7 +189,10 @@ const LKSLib =
         {
             for (var j in LKSConstant.CreateInvisibleElement.Styles)
             {
+                if (LKSConstant.CreateInvisibleElement.CoverElement[j] != null)
+                {
                 CoverElementsArray[i].style[LKSConstant.CreateInvisibleElement.Styles[j]] = LKSConstant.CreateInvisibleElement.CoverElement[j];
+                }
             }
             RandomElement.appendChild(CoverElementsArray[i]);
         }
