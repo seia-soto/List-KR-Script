@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d27
+// @version      1.0d28
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -189,16 +189,16 @@ const LKSLib =
         {
             RandomElement.style[LKSConstant.CreateInvisibleElement.Styles[i]] = LKSConstant.CreateInvisibleElement.RandomElement[i];
         }
-        for (var i in CoverElementsArray)
+        for (var j in CoverElementsArray)
         {
-            for (var j in LKSConstant.CreateInvisibleElement.Styles)
+            for (var k in LKSConstant.CreateInvisibleElement.Styles)
             {
                 if (LKSConstant.CreateInvisibleElement.CoverElement[j] != null)
                 {
-                    CoverElementsArray[i].style[LKSConstant.CreateInvisibleElement.Styles[j]] = LKSConstant.CreateInvisibleElement.CoverElement[j];
+                    CoverElementsArray[j].style[LKSConstant.CreateInvisibleElement.Styles[k]] = LKSConstant.CreateInvisibleElement.CoverElement[k];
                 }
             }
-            RandomElement.appendChild(CoverElementsArray[i]);
+            RandomElement.appendChild(CoverElementsArray[j]);
         }
     },
     ConvertImageURLToBase64: function(ImageURL)
