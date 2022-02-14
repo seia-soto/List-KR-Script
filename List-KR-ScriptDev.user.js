@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d25
+// @version      1.0d26
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -137,15 +137,6 @@ const LKSLib =
         }
         
         return ReturnArray;
-    },
-    SearchElementsHasStyle: function(ElementType, HasStyle)
-    {
-        var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType;
-        if (NodeList.prototype.isPrototypeOf(Elements))
-        {
-            return LKSLib.SearchElementHasStyle(Array.from(Elements), HasStyle);
-        }
-        return LKSLib.CheckElementHasStyle(Elements, HasStyle);
     },
     CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist. Returns bool type.
     {
