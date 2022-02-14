@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d28
+// @version      1.0d29
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -151,11 +151,19 @@ const LKSLib =
             return null;
         }
     },
-    CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist. Returns bool type.
+    CheckHasElement: function(ParentElement, TargetElement, Depth) // null means that mentioned element does not exist. Returns bool type.
     {
 
     },
-    CheckHasAncestorElement: function(ParentElement, TargetElement)
+    CheckHasAncestorElement: function(ParentElement, TargetElement, Depth)
+    {
+
+    },
+    CheckHasGenerationElement: function(BaseElement, TargetElement)
+    {
+
+    },
+    CheckHasIndexedElement: function(BaseElement, TargetElement, Depth)
     {
 
     },
