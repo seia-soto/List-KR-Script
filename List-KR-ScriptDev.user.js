@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d26
+// @version      1.0d27
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -135,8 +135,21 @@ const LKSLib =
         {
             return LKSLib.SearchElementHasStyles(Array.from(Elements), HasStyleArray);
         }
-        
-        return ReturnArray;
+        for (var i in Elements)
+        {
+            if (LKSLib.CheckElementHasStyles(Elements[i], HasStyleArray))
+            {
+                ReturnArray.push(Elements[i]);
+            }
+        }
+        if (ReturnArray.length > 0)
+        {
+            return ReturnArray;
+        }
+        else
+        {
+            return null;
+        }
     },
     CheckHasElement: function(ParentElement, TargetElement) // null means that mentioned element does not exist. Returns bool type.
     {
