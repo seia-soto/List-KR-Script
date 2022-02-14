@@ -4,7 +4,7 @@ List-KR Script blocks complicated advertisement to block on NamuWiki, website pr
 ### Quick Start
 Just click the following URL to detect this userscript.
 
-https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
+https://github.com/List-KR/List-KR-Script/raw/rel/List-KR-Script.user.js
 
 ### How to install
 - [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) [^1] - Browser extension
@@ -12,7 +12,7 @@ https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
     2. Go to `Utilities` tab.
     3. Input the following URL into `Install from URL`:
         ```
-        https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
+        https://github.com/List-KR/List-KR-Script/raw/rel/List-KR-Script.user.js
         ```
     4. Confirm metadata of the userscript and click `Install`.
     
@@ -22,7 +22,7 @@ https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
     3. Click `Add extension`.
     4. Input the following URL:
         ```
-        https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
+        https://github.com/List-KR/List-KR-Script/raw/rel/List-KR-Script.user.js
         ```
     5. Click `Install`.
     6. Confirm metadata of the userscript and click `Install`.
@@ -33,7 +33,7 @@ https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
     2. Touch `New extension`.
     3. Input the following URL:
         ```
-        https://github.com/List-KR/List-KR-Script/raw/master/List-KR-Script.user.js
+        https://github.com/List-KR/List-KR-Script/raw/rel/List-KR-Script.user.js
         ```
     4. Touch `Next`.
     5. Confirm metadata of the userscript and touch `Add`.
