@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d29
+// @version      1.0d30
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -33,7 +33,9 @@
 // Used Open Source Projects:
 // Chancejs ( https://github.com/chancejs/chancejs )
 
+(function() {
 'use strict';
+
 const LKSConstant =
 {
     StyleSplitKey: ": ",
@@ -270,3 +272,5 @@ switch (LKSLib.location)
 
 // window.addEventListener("load", Blocker);
 // window.addEventListener("pushState", Blocker);
+
+})();
