@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d30
+// @version      1.0d31
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -210,6 +210,10 @@ const LKSLib =
             }
             RandomElement.appendChild(CoverElementsArray[j]);
         }
+    },
+    CreateHoverElement: function(ParentElement, HoverElement)
+    {
+
     },
     ConvertImageURLToBase64: function(ImageURL)
     {
