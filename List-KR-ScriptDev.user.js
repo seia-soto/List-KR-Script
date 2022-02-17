@@ -28,10 +28,8 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-start
-// @require      https://chancejs.com/chance.min.js
 // ==/UserScript==
 // Used Open Source Projects:
-// Chancejs ( https://github.com/chancejs/chancejs )
 
 (function() {
 'use strict';
