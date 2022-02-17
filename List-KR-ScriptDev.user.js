@@ -212,10 +212,6 @@ const LKSLib =
             return false;
         }
     },
-    CheckHasIndexedElement: function(BaseElement, TargetElement, Depth)
-    {
-
-    },
     HideElements: function(ElementArray)
     {
         if (!Array.isArray(ElementArray))
