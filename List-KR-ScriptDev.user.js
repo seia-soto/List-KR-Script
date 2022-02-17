@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d31
+// @version      1.0d32
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -159,7 +159,35 @@ const LKSLib =
     },
     CheckHasAncestorElement: function(ParentElement, TargetElement, Depth)
     {
-
+        if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received ParentElement, but not an object.");
+        }
+        if (NodeList.prototype.isPrototypeOf(TargetElement) || Array.isArray(TargetElement) || typeof TargetElement == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received TargetElement, but not an object.");
+        }
+        if (Depth != null || typeof Depth != "number")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received Depth, but not a number or null.");
+        }
+        var ReturnArray = [], Depth = Depth == null ? Number.MAX_SAFE_INTEGER : Depth
+        for (var i = 0; i < Depth; i++)
+        {
+            if (ReturnArray[i].parentNode.URL != undefined)
+            {
+                break;
+            }
+            ReturnArray.unshift(ReturnArray[i].parentNode);
+        }
+        if (ReturnArray.find(element => element == TargetElement) != undefined)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     },
     CheckHasGenerationElement: function(BaseElement, TargetElement)
     {
