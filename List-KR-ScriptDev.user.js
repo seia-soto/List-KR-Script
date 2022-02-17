@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d35
+// @version      1.0d36
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -252,7 +252,7 @@ const LKSLib =
         {
             LKSDebug.Error("LISTKRSCRIPT.LKSLib.CreateInvisibleElement", "Received ParentElement, but not an array or NodeList.");
         }
-        var RandomElement = ParentElement.createElement("div#" + chance.string({ length: IDLength, pool: LKSConstant.Random.String }));
+        var RandomElement = ParentElement.createElement("div#" + LKSLib.GenerateRandom(LKSConstant.Random, IDLength));
         for (var i in LKSConstant.CreateInvisibleElement.Styles)
         {
             RandomElement.style[LKSConstant.CreateInvisibleElement.Styles[i]] = LKSConstant.CreateInvisibleElement.RandomElement[i];
