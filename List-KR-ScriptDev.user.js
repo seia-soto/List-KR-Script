@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d32
+// @version      1.0d33
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -191,7 +191,26 @@ const LKSLib =
     },
     CheckHasGenerationElement: function(BaseElement, TargetElement)
     {
-
+        if (NodeList.prototype.isPrototypeOf(BaseElement) || Array.isArray(BaseElement) || typeof BaseElement == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasGenerationElement", "Received BaseElement, but not an object.");
+        }
+        if (NodeList.prototype.isPrototypeOf(TargetElement) || Array.isArray(TargetElement) || typeof TargetElement == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasGenerationElement", "Received TargetElement, but not an object.");
+        }
+        if (BaseElement.parentNode.URL != undefined)
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasGenerationElement", "Received BaseElement, but html.");
+        }
+        if (Array.from(BaseElement.parentNode.childNodes).find(element => element == TargetElement))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     },
     CheckHasIndexedElement: function(BaseElement, TargetElement, Depth)
     {
