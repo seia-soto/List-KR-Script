@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d34
+// @version      1.0d35
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -79,6 +79,19 @@ const LKSLib =
     MutationObserver: LKSLib.window.MutationObserver,
     MutationRecord: LKSLib.window.MutationRecord,
     location: LKSLib.window.location,
+    GenerateRandom: function(BaseString, Length)
+    {
+        if (typeof length == "string")
+        {
+            LKSDebug.Error("LISTKRSCRIPT.LKSLib.GenerateRandom", "Received Length, but not an number.");
+        }
+        var Returns;
+        for (var i = 0; i < Length; i++)
+        {
+            Returns += BaseString.charAt(Math.floor(Math.random() * BaseString.length));
+        }
+        return Returns;
+    },
     CheckElementHasStyle: function(Elementv, HasStyle)
     {
         if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
