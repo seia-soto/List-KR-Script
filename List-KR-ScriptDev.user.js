@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d33
+// @version      1.0d34
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -44,6 +44,10 @@ const LKSConstant =
         Styles: ["width", "height", "display", "visibility"],
         RandomElement: ["0px", "0px", "none", "collapse"],
         CoverElement: ["", "", "", ""]
+    },
+    CreateHoverElement:
+    {
+        Delay: 0
     },
     NamuWiki:
     {
