@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d36
+// @version      1.0d37
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -186,7 +186,8 @@ const LKSLib =
         {
             LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received Depth, but not a number or null.");
         }
-        var ReturnArray = [], Depth = Depth == null ? Number.MAX_SAFE_INTEGER : Depth
+        var ReturnArray = [];
+        Depth = Depth == null ? Number.MAX_SAFE_INTEGER : Depth;
         for (var i = 0; i < Depth; i++)
         {
             if (ReturnArray[i].parentNode.URL != undefined)
