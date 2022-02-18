@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d38
+// @version      1.0d39
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -49,7 +49,7 @@ const LKSConstant =
     },
     NamuWiki:
     {
-        ArticleElement: "div.namuwiki-toc-ad", 
+        ArticleElementArray: ["div.wiki-paragraph", "div.wiki-heading-content", "div.namuwiki-toc-ad", ".wiki-heading"], 
         PowerLink:
         {
             HeaderAddressArray: []
