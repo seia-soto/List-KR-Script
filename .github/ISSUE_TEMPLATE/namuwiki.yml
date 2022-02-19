@@ -20,7 +20,7 @@ body:
       multiple: true
       options:
         - Standard
-        - Beta
+        - Dev
     validations:
       required: true
   
@@ -56,33 +56,10 @@ body:
         - AdGuard for Windows
         - AdGuard for Android
         - AdGuard for Mac
-        - uBlock Origin
+        - AdGuard for iOS
         - (Other)
     validations:
       required: true
-
-  - type: checkboxes
-    id: proxysupport
-    attributes:
-      label: Proxy Support for reproduction
-      description: Can you provide network of your computer as a proxy server? It is require to reproduce your issue.
-      options:
-        - label: HTTP
-        - label: HTTPS
-        - label: SOCKS4
-        - label: SOCKS5
-        - label: No. I cannot.
-
-  - type: checkboxes
-    id: remoteaccess
-    attributes:
-      label: Remote Access for reproduction
-      description: It helps the contributors .
-      options:
-        - label: "Remote Desktop Protocol (server: https://github.com/neutrinolabs/xrdp)"
-        - label: TeamViewer
-        - label: AnyDesk
-        - label: No. I cannot.
 
   - type: textarea
     id: comment
