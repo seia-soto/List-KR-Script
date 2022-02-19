@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d40
+// @version      1.0d41
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -182,7 +182,7 @@ const LKSLib =
         {
             LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received TargetElement, but not an object.");
         }
-        if (Depth != null || typeof Depth != "number")
+        if (Depth != null && typeof Depth != "number")
         {
             LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received Depth, but not a number or null.");
         }
