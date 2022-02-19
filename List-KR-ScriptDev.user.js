@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d41
+// @version      1.0d42
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -16,6 +16,9 @@
 // @match        *://ygosu.com/*
 // @match        *://ppss.kr/*
 // @match        *://ad-shield.io/*
+// @match        *://sports.donga.com/*
+// @match        *://mlbpark.donga.com/*
+// @exclude      *://secure.donga.com/*
 // @exclude      *://member.inven.co.kr/*
 // @exclude      *://namu.wiki/member/login?*
 // @exclude      *://namu.wiki/w/사용자:*
