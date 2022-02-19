@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d39
+// @version      1.0d40
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -172,7 +172,7 @@ const LKSLib =
     {
 
     },
-    CheckHasAncestorElement: function(ParentElement, TargetElement, Depth)
+    CheckHasAncestorElement: function(TargetElement, ParentElement, Depth)
     {
         if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
         {
