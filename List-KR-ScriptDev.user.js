@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d50
+// @version      1.0d51
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -344,10 +344,10 @@ LKSLib.ReleaseMemory = function(VariableArray) // To clear the variables, conver
 
 LKSLib.window.console.log("Running...");
 
-switch (LKSLib.location)
+switch (true)
 {
     // namu.wiki
-    case new RegExp(":\/\/namu\.wiki\/w\/"):
+    case /:\/\/namu\.wiki\/w\//g.test(LKSLib.location):
         LKSLib.window.console.log("Running...");
         var ArticleTopElement;
         var Watch = function(MutationList, Observer)
