@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d57
+// @version      1.0d58
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -352,16 +352,14 @@ switch (true)
         var ArticleTopElement;
         var Watch = function(MutationList, Observer)
         {
-            for(var Mutation of MutationList)
+            
+            for (var i in Array.from(Mutation.target.attributes))
             {
-                for (var i in Array.from(Mutation.target.attributes))
+                LKSLib.window.console.log("i1: ", Mutation.target);
+                if (Array.from(Mutation.target.attributes)[i].split("=\"")[0] == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element == Array.from(Mutation.target.attributes)[i].split("=\"")[1].replace("\"", "")) != undefined)
                 {
-                    LKSLib.window.console.log("i1: ", Mutation.target);
-                    if (Array.from(Mutation.target.attributes)[i].split("=\"")[0] == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element == Array.from(Mutation.target.attributes)[i].split("=\"")[1].replace("\"", "")) != undefined)
-                    {
-                        LKSLib.HideElements([Mutation.target]);
-                        LKSLib.window.console.log("Hided!");
-                    }
+                    LKSLib.HideElements([Mutation.target]);
+                    LKSLib.window.console.log("Hided!");
                 }
             }
         };
