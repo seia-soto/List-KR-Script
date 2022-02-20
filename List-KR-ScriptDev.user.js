@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d49
+// @version      1.0d50
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -341,6 +341,8 @@ LKSLib.ReleaseMemory = function(VariableArray) // To clear the variables, conver
         VariableArray = null;
     }
 };
+
+LKSLib.window.console.log("Running...");
 
 switch (LKSLib.location)
 {
