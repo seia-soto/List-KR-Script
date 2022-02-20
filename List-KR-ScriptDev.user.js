@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d61
+// @version      1.0d62
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -342,27 +342,20 @@ LKSLib.ReleaseMemory = function(VariableArray) // To clear the variables, conver
     }
 };
 
-LKSLib.window.console.log("Running...");
-
 switch (true)
 {
     // namu.wiki
     case /:\/\/namu\.wiki\/w\//g.test(LKSLib.location):
-        LKSLib.window.console.log("Running...");
         var ArticleTopElement;
         var Watch = function(MutationList, Observer)
         {
-            LKSLib.window.console.log(MutationList);
             for(var Mutation of MutationList)
             {
-                LKSLib.window.console.log(Mutation);
                 for (var i in Array.from(Mutation.target.attributes))
                 {
-                    LKSLib.window.console.log("i1: ", Mutation.target);
-                    if (Array.from(Mutation.target.attributes)[i].split("=\"")[0] == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element == Array.from(Mutation.target.attributes)[i].split("=\"")[1].replace("\"", "")) != undefined)
+                    if (Array.from(Mutation.target.attributes)[i].name == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element == Array.from(Mutation.target.attributes)[i].nodeValue) != undefined)
                     {
                         LKSLib.HideElements([Mutation.target]);
-                        LKSLib.window.console.log("Hided!");
                     }
                 }
             }
