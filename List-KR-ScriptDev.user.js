@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d55
+// @version      1.0d56
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -253,7 +253,7 @@ LKSLib.CheckHasGenerationElement = function(BaseElement, TargetElement)
     {
         LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasGenerationElement", "Received BaseElement, but html.");
     }
-    if (Array.from(BaseElement.parentNode.childNodes).find(element => element == TargetElement))
+    if (Array.from(BaseElement.parentNode.childNodes).find(element => element == TargetElement) != undefined)
     {
         return true;
     }
