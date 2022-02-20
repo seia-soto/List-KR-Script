@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d58
+// @version      1.0d59
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -352,7 +352,6 @@ switch (true)
         var ArticleTopElement;
         var Watch = function(MutationList, Observer)
         {
-            
             for (var i in Array.from(Mutation.target.attributes))
             {
                 LKSLib.window.console.log("i1: ", Mutation.target);
