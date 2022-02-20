@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d44
+// @version      1.0d45
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -347,8 +347,23 @@ const LKSLib =
 switch (LKSLib.location)
 {
     // namu.wiki
-    case new RegExp(":\/\/namu\.wiki\/"):
-
+    case new RegExp(":\/\/namu\.wiki\/w\/"):
+        var ArticleTopElement;
+        var Watch = function(MutationList, Observer)
+        {
+            for(var Mutation of MutationList)
+            {
+                for (var i in Array.from(Mutation.target.attributes))
+                {
+                    if (Array.from(Mutation.target.attributes)[i].split("=\"")[0] == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element == Array.from(Mutation.target.attributes)[i].split("=\"")[1].replace("\"", "")))
+                    {   
+                        LKSLib.HideElements([Mutation.target]);
+                    }
+                }
+            }
+        }
+        var Observer = new LKSLib.MutationObserver(Watch);
+        Observer.observe(LKSLib.querySelectorAll("img"), {attributes: true});
     break;
 
     // inven.co.kr
