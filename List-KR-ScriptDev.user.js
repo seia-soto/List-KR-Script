@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d45
+// @version      1.0d46
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -80,13 +80,12 @@ const LKSDebug =
         throw e;
     }
 }
-const LKSLib =
-{
-    window: typeof unsafeWindow == "undefined" ? window : unsafeWindow,
-    MutationObserver: LKSLib.window.MutationObserver,
-    MutationRecord: LKSLib.window.MutationRecord,
-    location: LKSLib.window.location,
-    GenerateRandom: function(BaseString, Length)
+var LKSLib = {};
+LKSLib.window = typeof unsafeWindow == "undefined" ? window : unsafeWindow;
+LKSLib.MutationObserver = LKSLib.window.MutationObserver;
+LKSLib.MutationRecor = LKSLib.window.MutationRecord;
+LKSLib.location = LKSLib.window.location;
+LKSLib.GenerateRando = function(BaseString, Length)
     {
         if (typeof length == "string")
         {
@@ -98,8 +97,8 @@ const LKSLib =
             Returns += BaseString.charAt(Math.floor(Math.random() * BaseString.length));
         }
         return Returns;
-    },
-    CheckElementHasStyle: function(Elementv, HasStyle)
+};
+LKSLib.CheckElementHasStyle = function(Elementv, HasStyle)
     {
         if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
         {
@@ -113,8 +112,8 @@ const LKSLib =
         {
             return false;
         }
-    },
-    CheckElementHasStyles: function(Elementv, HasStyleArray)
+};
+LKSLib.CheckElementHasStyles = function(Elementv, HasStyleArray)
     {
         if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
         {
@@ -128,8 +127,8 @@ const LKSLib =
             }
         }
         return true;
-    },
-    SearchElementsHasStyle: function(ElementType, HasStyle)
+};
+LKSLib.SearchElementsHasStyle = function(ElementType, HasStyle)
     {
         var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
         if (NodeList.prototype.isPrototypeOf(Elements))
@@ -151,8 +150,8 @@ const LKSLib =
         {
             return null;
         }
-    },
-    SearchElementsHasStyles: function(ElementType, HasStyleArray) // ElementType support string, NodeList, Array. Elments of returned array have all each HasStyleArray.
+};
+LKSLib.SearchElementsHasStyles = function(ElementType, HasStyleArray) // ElementType support string, NodeList, Array. Elments of returned array have all each HasStyleArray.
     {
         var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
         if (NodeList.prototype.isPrototypeOf(Elements))
@@ -174,8 +173,8 @@ const LKSLib =
         {
             return null;
         }
-    },
-    CheckHasElement: function(ParentElement, TargetElement, Depth) // null means that mentioned element does not exist. Returns bool type.
+};
+LKSLib.CheckHasElement = function(ParentElement, TargetElement, Depth) // null means that mentioned element does not exist. Returns bool type.
     {
         if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
         {
@@ -206,8 +205,8 @@ const LKSLib =
             }
         }
         return false;
-    },
-    CheckHasAncestorElement: function(TargetElement, ParentElement, Depth)
+};
+LKSLib.CheckHasAncestorElement = function(TargetElement, ParentElement, Depth)
     {
         if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
         {
@@ -239,8 +238,8 @@ const LKSLib =
         {
             return false;
         }
-    },
-    CheckHasGenerationElement: function(BaseElement, TargetElement)
+};
+LKSLib.CheckHasGenerationElement = function(BaseElement, TargetElement)
     {
         if (NodeList.prototype.isPrototypeOf(BaseElement) || Array.isArray(BaseElement) || typeof BaseElement == "string")
         {
@@ -262,8 +261,8 @@ const LKSLib =
         {
             return false;
         }
-    },
-    HideElements: function(ElementArray)
+};
+LKSLib.HideElements = function(ElementArray)
     {
         if (!Array.isArray(ElementArray))
         {
@@ -273,8 +272,8 @@ const LKSLib =
         {
             ElementArray[i].style.display = "none";
         }
-    },
-    CreateInvisibleElement: function(ParentElement, CoverElementsArray, IDLength)
+};
+LKSLib.CreateInvisibleElement = function(ParentElement, CoverElementsArray, IDLength)
     {
         if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
         {
@@ -304,12 +303,12 @@ const LKSLib =
             }
             RandomElement.appendChild(CoverElementsArray[j]);
         }
-    },
-    CreateHoverElement: function(ParentElement, HoverElement)
+};
+LKSLib.CreateHoverElement = function(ParentElement, HoverElement, IDLength)
     {
 
-    },
-    ConvertImageURLToBase64: function(ImageURL)
+};
+LKSLib.ConvertImageURLToBase64 = function(ImageURL)
     {
         // If the request is falied, the function will return null.
         const ImageResponse = fetch(new Request(ImageURL));
@@ -323,8 +322,8 @@ const LKSLib =
             });
             Reader.readAsDataURL(ImageB);
         });
-    },
-    ReleaseMemory: function(VariableArray) // To clear the variables, conver them with array.
+};
+LKSLib.ReleaseMemory = function(VariableArray) // To clear the variables, conver them with array.
     {
         if (VariableArray == undefined || VariableArray == null)
         {
@@ -340,7 +339,6 @@ const LKSLib =
         else
         {
             VariableArray = null;
-        }
     }
 };
 
