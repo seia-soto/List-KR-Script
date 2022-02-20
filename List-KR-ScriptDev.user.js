@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d53
+// @version      1.0d54
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -365,8 +365,10 @@ switch (true)
                 }
             }
         }
-        var Observer = new LKSLib.MutationObserver(Watch);
-        Observer.observe(LKSLib.window.document.querySelectorAll("img"), {attributes: true});
+        for (var i in LKSLib.window.document.querySelectorAll("img"))
+        {
+            new LKSLib.MutationObserver(Watch).observe(LKSLib.window.document.querySelectorAll("img")[i], {attributes: true});
+        }
     break;
 
     // inven.co.kr
