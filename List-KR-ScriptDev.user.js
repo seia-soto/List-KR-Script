@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d43
+// @version      1.0d44
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -31,8 +31,12 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-start
+// @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js
+// @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js
+// @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core
+// @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl
 // ==/UserScript==
-// Used Open Source Projects:
+// Used Open Source Projects: TFjs (https://github.com/tensorflow/tfjs)
 
 (function() {
 'use strict';
