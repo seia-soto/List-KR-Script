@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d48
+// @version      1.0d49
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -346,6 +346,7 @@ switch (LKSLib.location)
 {
     // namu.wiki
     case new RegExp(":\/\/namu\.wiki\/w\/"):
+        LKSLib.window.console.log("Running...");
         var ArticleTopElement;
         var Watch = function(MutationList, Observer)
         {
@@ -353,9 +354,11 @@ switch (LKSLib.location)
             {
                 for (var i in Array.from(Mutation.target.attributes))
                 {
+                    LKSLib.window.console.log("i1: ", Mutation.target);
                     if (Array.from(Mutation.target.attributes)[i].split("=\"")[0] == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element == Array.from(Mutation.target.attributes)[i].split("=\"")[1].replace("\"", "")))
                     {   
                         LKSLib.HideElements([Mutation.target]);
+                        LKSLib.window.console.log("Hided!");
                     }
                 }
             }
