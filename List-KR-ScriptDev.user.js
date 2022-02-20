@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d51
+// @version      1.0d52
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -85,6 +85,7 @@ LKSLib.window = typeof unsafeWindow == "undefined" ? window : unsafeWindow;
 LKSLib.MutationObserver = LKSLib.window.MutationObserver;
 LKSLib.MutationRecor = LKSLib.window.MutationRecord;
 LKSLib.location = LKSLib.window.location;
+LKSLib.querySelectorAll = LKSLib.window.document.querySelectorAll;
 LKSLib.GenerateRando = function(BaseString, Length)
 {
     if (typeof length == "string")
