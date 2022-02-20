@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d47
+// @version      1.0d48
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -59,7 +59,7 @@ const LKSConstant =
         ArticleElementArray: ["div.wiki-paragraph", "div.wiki-heading-content", "div.namuwiki-toc-ad", ".wiki-heading"], 
         PowerLink:
         {
-            HeaderAddressArray: []
+            HeaderAddressArray: ["//w.namu.la/s/05f69201b6b3e80dae3860e1d500f50da6b2a0aacad4f7b90f2ed7d68459e84c", "//w.namu.la/s/186360a9f9684aa6f9ddb4bd9df5e2362aa4bdf3dc944ea3088e6d9d17d1e854"]
         }
     },
     AdShield:
