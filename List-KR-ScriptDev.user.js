@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d60
+// @version      1.0d61
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -367,9 +367,21 @@ switch (true)
                 }
             }
         };
-        for (var i in Array.from(LKSLib.window.document.querySelectorAll("img")))
+        var func = function ()
         {
-            new LKSLib.MutationObserver(Watch).observe(Array.from(document.querySelectorAll("img"))[i], {attributes: true});
+            for (var i in Array.from(LKSLib.window.document.querySelectorAll("img")))
+            {
+                new LKSLib.MutationObserver(Watch).observe(Array.from(document.querySelectorAll("img"))[i], {attributes: true});
+            }
+        };
+        if (LKSLib.window.document.readyState == "complete" || LKSLib.window.document.readyState == "interactive")
+        {
+            func();
+        }
+        if (LKSLib.window.document.addEventListener)
+        {
+            LKSLib.window.document.addEventListener("DOMContentLoaded", func);
+            LKSLib.window.document.addEventListener("hashchange", func);
         }
     break;
 
