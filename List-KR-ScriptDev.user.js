@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d63
+// @version      1.0d64
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -64,7 +64,7 @@ const LKSConstant =
     },
     AdShield:
     {
-        
+
     },
     Random:
     {
@@ -342,6 +342,9 @@ LKSLib.ReleaseMemory = function(VariableArray) // To clear the variables, conver
     }
 };
 
+// ######################################################################################
+// ######################################################################################
+
 switch (true)
 {
     // namu.wiki
@@ -382,7 +385,7 @@ switch (true)
     case /:\/\/.{1,}\.inven\.co\.kr\//g.test(LKSLib.location):
 
     break;
-    
+
     // ygosu.com
     case /:\/\/ygosu\.com\//g.test(LKSLib.location):
 
@@ -393,9 +396,4 @@ switch (true)
 
     break;
 };
-
-
-// window.addEventListener("load", Blocker);
-// window.addEventListener("pushState", Blocker);
-
 })();
