@@ -57,6 +57,7 @@ body:
         - AdGuard for Android
         - AdGuard for Mac
         - AdGuard for iOS
+        - Violentmonkey
         - (Other)
     validations:
       required: true
