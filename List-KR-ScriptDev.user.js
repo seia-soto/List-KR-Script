@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d65
+// @version      1.0d66
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -133,7 +133,7 @@ LKSLib.SearchElementsHasStyle = function(ElementType, HasStyle)
     var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
     if (NodeList.prototype.isPrototypeOf(Elements))
     {
-        return LKSLib.SearchElementHasStyle(Array.from(Elements), HasStyle);
+        Elements = Array.from(Elements);
     }
     for (var i in Elements)
     {
@@ -156,7 +156,7 @@ LKSLib.SearchElementsHasStyles = function(ElementType, HasStyleArray) // Element
     var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
     if (NodeList.prototype.isPrototypeOf(Elements))
     {
-        return LKSLib.SearchElementHasStyles(Array.from(Elements), HasStyleArray);
+        Elements = Array.from(Elements);
     }
     for (var i in Elements)
     {
@@ -281,7 +281,7 @@ LKSLib.CreateInvisibleElement = function(ParentElement, CoverElementsArray, IDLe
     }
     if (NodeList.prototype.isPrototypeOf(CoverElementsArray))
     {
-        return LKSLib.CreateInvisibleElement(ParentElement, Array.from(CoverElementsArray));
+        Elements = Array.from(Elements);
     }
     else if (typeof CoverElementsArray == "string")
     {
