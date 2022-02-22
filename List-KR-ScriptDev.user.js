@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d64
+// @version      1.0d65
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -358,7 +358,7 @@ switch (true)
                 {
                     if (Array.from(Mutation.target.attributes)[i].name == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element == Array.from(Mutation.target.attributes)[i].nodeValue) != undefined)
                     {
-                        LKSLib.HideElements([Mutation.target]);
+                        var DivElements = LKSLib.SearchElementsHasStyles("div", ["box-sizing: inherit", "word-break: break-all", "font-size: .9rem", "line-height: 1.5"]);
                     }
                 }
             }
