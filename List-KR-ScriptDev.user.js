@@ -190,6 +190,21 @@ LKSLib.CheckElementHasOnlyStyle = function(Elementv, HasStyle)
         return false;
     }
 };
+LKSLib.CheckElementHasOnlyStyles = function(Elementv, HasStyleArray)
+{
+    if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
+    {
+        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasOnlyStyles", "Received Elementv, but not an object.");
+    }
+    for (var i in HasStyleArray)
+    {
+        if (LKSLib.CheckElementHasOnlyStyle(Elementv, HasStyleArray[i]) == false)
+        {
+            return false;
+        }
+    }
+    return true;
+};
 LKSLib.CheckHasElement = function(ParentElement, TargetElement, Depth) // null means that mentioned element does not exist. Returns bool type.
 {
     if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
