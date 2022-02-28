@@ -205,6 +205,29 @@ LKSLib.CheckElementHasOnlyStyles = function(Elementv, HasStyleArray)
     }
     return true;
 };
+LKSLib.SearchElementsHasOnlyStyle = function(ElementType, HasStyle)
+{
+    var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
+    if (NodeList.prototype.isPrototypeOf(Elements))
+    {
+        Elements = Array.from(Elements);
+    }
+    for (var i in Elements)
+    {
+        if (LKSLib.CheckElementHasOnlyStyles(Elements[i], HasStyle))
+        {
+            ReturnArray.push(Elements[i]);
+        }
+    }
+    if (ReturnArray.length > 0)
+    {
+        return ReturnArray;
+    }
+    else
+    {
+        return null;
+    }
+};
 LKSLib.CheckHasElement = function(ParentElement, TargetElement, Depth) // null means that mentioned element does not exist. Returns bool type.
 {
     if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
