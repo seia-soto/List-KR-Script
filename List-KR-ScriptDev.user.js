@@ -175,6 +175,21 @@ LKSLib.SearchElementsHasStyles = function(ElementType, HasStyleArray) // Element
         return null;
     }
 };
+LKSLib.CheckElementHasOnlyStyle = function(Elementv, HasStyle)
+{
+    if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
+    {
+        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasOnlyStyle", "Received Elementv, but not an object.");
+    }
+    if (Elementv.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+};
 LKSLib.CheckHasElement = function(ParentElement, TargetElement, Depth) // null means that mentioned element does not exist. Returns bool type.
 {
     if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
