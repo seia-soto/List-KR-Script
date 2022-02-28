@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      1.0d69
+// @version      1.0d70
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -105,7 +105,7 @@ LKSLib.CheckElementHasStyle = function(Elementv, HasStyle)
     {
         LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Elementv, but not an object.");
     }
-    if (Elementv.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
+    if (LKSLib.window.getComputedStyle(Elementv).getPropertyValue(HasStyle.split(LKSConstant.StyleSplitKey)[0]) == HasStyle.split(LKSConstant.StyleSplitKey)[1])
     {
         return true;
     }
