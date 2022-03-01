@@ -20,7 +20,7 @@ body:
       multiple: true
       options:
         - Standard
-        - Beta
+        - Dev
     validations:
       required: true
 
@@ -56,7 +56,8 @@ body:
         - AdGuard for Windows
         - AdGuard for Android
         - AdGuard for Mac
-        - uBlock Origin
+        - AdGuard for iOS
+        - Violentmonkey
         - (Other)
     validations:
       required: true

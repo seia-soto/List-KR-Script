@@ -10,7 +10,7 @@ Of course, you should follow List-KR Script Contributing Guidelines.
 - Every contributors must respect an user's privacy.
 - All commit that is pushed to master branch must be signed.
 - Your email must be public.
-- Publishing your OpenPGP public key is recommended.
+- Publishing your OpenPGP public key is highly recommended.
 - When version of List-KR Script is updated, you must leave a changelog at the wiki.
 
 ## Work without an offline editor
