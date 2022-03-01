@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/rel/List-KR-Script.user.js
 // @license      MPL-2.0
 //
-// @version      1.0
+// @version      1.0.1
 // @author       PiQuark6046 ( piquark6046@protonmail.com ) and contributors
 //
 // @match        http://namu.wiki/*
@@ -28,7 +28,7 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-start
-// @require      https://github.com/List-KR/List-KR-Script/raw/master/JSProtectionDev.js
+// @require      https://github.com/List-KR/List-KR-Script/raw/rel/JSProtection.js
 // @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js
 // @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js
 // @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core
@@ -57,7 +57,7 @@
             ArticleElementArray: ["div.wiki-paragraph", "div.wiki-heading-content", "div.namuwiki-toc-ad", ".wiki-heading"], 
             PowerLink:
             {
-                HeaderAddressArray: ["//w.namu.la/s/05f69201b6b3e80dae3860e1d500f50da6b2a0aacad4f7b90f2ed7d68459e84c", "//w.namu.la/s/186360a9f9684aa6f9ddb4bd9df5e2362aa4bdf3dc944ea3088e6d9d17d1e854"]
+                HeaderAddressArray: ["//w.namu.la/s/532aff8dce633ee941e2a4a06e4b503c52859ad85ccd10fc411d0b2c2a0e6eae", "//w.namu.la/s/4de830a9d4001e900bb7e99aad0a7001c410f5c9c0f44aecd1e0946c288f8a86", "//w.namu.la/s/05f69201b6b3e80dae3860e1d500f50da6b2a0aacad4f7b90f2ed7d68459e84c", "//w.namu.la/s/186360a9f9684aa6f9ddb4bd9df5e2362aa4bdf3dc944ea3088e6d9d17d1e854"]
             }
         },
         AdShield:
