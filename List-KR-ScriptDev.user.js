@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d2
+// @version      2.0d3
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -31,7 +31,6 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-start
-// @require      https://github.com/List-KR/List-KR-Script/raw/master/JSProtectionDev.js
 // @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js
 // @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js
 // @require      https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core
