@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d3
+// @version      2.0d4
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -357,7 +357,7 @@ LKSLib.CreateInvisibleElement = function(ParentElement, CoverElementsArray, IDLe
     }
     if (NodeList.prototype.isPrototypeOf(CoverElementsArray))
     {
-        Elements = Array.from(Elements);
+        CoverElementsArray = Array.from(CoverElementsArray);
     }
     else if (typeof CoverElementsArray == "string")
     {
