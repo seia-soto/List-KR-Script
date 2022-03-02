@@ -448,10 +448,6 @@ switch (true)
                 new LKSLib.MutationObserver(Watch).observe(Array.from(document.querySelectorAll("img"))[i], {attributes: true});
             }
         };
-        if (LKSLib.window.document.readyState == "complete" || LKSLib.window.document.readyState == "interactive")
-        {
-            func();
-        }
         if (LKSLib.window.document.addEventListener)
         {
             LKSLib.window.document.addEventListener("DOMContentLoaded", func);
