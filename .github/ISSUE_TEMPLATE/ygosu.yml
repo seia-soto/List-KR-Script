@@ -58,6 +58,7 @@ body:
         - AdGuard for Mac
         - AdGuard for iOS
         - Violentmonkey
+        - Userscripts
         - (Other)
     validations:
       required: true
