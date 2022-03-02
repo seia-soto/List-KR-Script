@@ -1,1 +1,0 @@
-// https://github.com/uBlockOrigin/uBlock-issues/issues/1741
