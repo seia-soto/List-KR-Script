@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d4
+// @version      2.0d5
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -21,7 +21,6 @@
 // @exclude      *://secure.donga.com/*
 // @exclude      *://member.inven.co.kr/*
 // @exclude      *://namu.wiki/member/login?*
-// @exclude      *://namu.wiki/w/사용자:*
 //
 // @description        List-KR Script allows you to block complicated advertisement to block on NamuWiki, website protected by ad-shield, etc.
 //
