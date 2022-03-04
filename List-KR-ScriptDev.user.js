@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d5
+// @version      2.0d6
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -42,7 +42,6 @@
 
 const LKSConstant =
 {
-    StyleSplitKey: ": ",
     CreateInvisibleElement:
     {
         Styles: ["width", "height", "display", "visibility"],
@@ -103,7 +102,7 @@ LKSLib.CheckElementHasStyle = function(Elementv, HasStyle)
     {
         LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Elementv, but not an object.");
     }
-    if (LKSLib.window.getComputedStyle(Elementv).getPropertyValue(HasStyle.split(LKSConstant.StyleSplitKey)[0]) == HasStyle.split(LKSConstant.StyleSplitKey)[1])
+    if (LKSLib.window.getComputedStyle(Elementv).getPropertyValue(HasStyle[0]) == HasStyle[1])
     {
         return true;
     }
@@ -179,7 +178,7 @@ LKSLib.CheckElementHasOnlyStyle = function(Elementv, HasStyle)
     {
         LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasOnlyStyle", "Received Elementv, but not an object.");
     }
-    if (Elementv.style[HasStyle.split(LKSConstant.StyleSplitKey)[0]] == HasStyle.split(LKSConstant.StyleSplitKey[1]))
+    if (Elementv.style[HasStyle[0]] == HasStyle[1])
     {
         return true;
     }
@@ -433,7 +432,7 @@ switch (true)
                 {
                     if (Array.from(Mutation.target.attributes)[i].name == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element.test(Array.from(Mutation.target.attributes)[i].nodeValue) == true) != undefined)
                     {
-                        var DivElements = LKSLib.SearchElementsHasStyles("div", ["border-top-style: solid", "box-sizing: border-box", "word-break: break-all", "background-origin: padding-box", "background-size: auto"]);
+                        var DivElements = LKSLib.SearchElementsHasStyles("div", [["border-top-style", "solid"], ["box-sizing", "border-box"], ["word-break", "break-all"], ["background-origin", "padding-box"], ["background-size", "auto"]]);
                         LKSLib.HideElements([DivElements[DivElements.length - 1]]);
                         LKSLib.window.console.log(DivElements[DivElements.length - 1]);
                     }
