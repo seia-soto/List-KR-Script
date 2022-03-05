@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d6
+// @version      2.0d7
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -96,7 +96,7 @@ LKSLib.GenerateRandom = function(BaseString, Length)
     }
     return Returns;
 };
-LKSLib.CheckElementHasStyle = function(Elementv, HasStyle)
+LKSLib.CheckElementHasComputedStyle = function(Elementv, HasStyle)
 {
     if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
     {
@@ -111,7 +111,7 @@ LKSLib.CheckElementHasStyle = function(Elementv, HasStyle)
         return false;
     }
 };
-LKSLib.CheckElementHasStyles = function(Elementv, HasStyleArray)
+LKSLib.CheckElementHasComputedStyles = function(Elementv, HasStyleArray)
 {
     if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
     {
@@ -119,14 +119,14 @@ LKSLib.CheckElementHasStyles = function(Elementv, HasStyleArray)
     }
     for (var i in HasStyleArray)
     {
-        if (LKSLib.CheckElementHasStyle(Elementv, HasStyleArray[i]) == false)
+        if (LKSLib.CheckElementHasComputedStyle(Elementv, HasStyleArray[i]) == false)
         {
             return false;
         }
     }
     return true;
 };
-LKSLib.SearchElementsHasStyle = function(ElementType, HasStyle)
+LKSLib.SearchElementsHasComputedStyle = function(ElementType, HasStyle)
 {
     var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
     if (NodeList.prototype.isPrototypeOf(Elements))
@@ -135,7 +135,7 @@ LKSLib.SearchElementsHasStyle = function(ElementType, HasStyle)
     }
     for (var i in Elements)
     {
-        if (LKSLib.CheckElementHasStyle(Elements[i], HasStyle))
+        if (LKSLib.CheckElementHasComputedStyle(Elements[i], HasStyle))
         {
             ReturnArray.push(Elements[i]);
         }
@@ -149,7 +149,7 @@ LKSLib.SearchElementsHasStyle = function(ElementType, HasStyle)
         return null;
     }
 };
-LKSLib.SearchElementsHasStyles = function(ElementType, HasStyleArray) // ElementType support string, NodeList, Array. Elments of returned array have all each HasStyleArray.
+LKSLib.SearchElementsHasComputedStyles = function(ElementType, HasStyleArray) // ElementType support string, NodeList, Array. Elments of returned array have all each HasStyleArray.
 {
     var Elements = typeof ElementType == "string" ? LKSLib.window.document.querySelectorAll(ElementType) : ElementType, ReturnArray = [];
     if (NodeList.prototype.isPrototypeOf(Elements))
@@ -158,7 +158,7 @@ LKSLib.SearchElementsHasStyles = function(ElementType, HasStyleArray) // Element
     }
     for (var i in Elements)
     {
-        if (LKSLib.CheckElementHasStyles(Elements[i], HasStyleArray))
+        if (LKSLib.CheckElementHasComputedStyles(Elements[i], HasStyleArray))
         {
             ReturnArray.push(Elements[i]);
         }
@@ -432,7 +432,7 @@ switch (true)
                 {
                     if (Array.from(Mutation.target.attributes)[i].name == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element.test(Array.from(Mutation.target.attributes)[i].nodeValue) == true) != undefined)
                     {
-                        var DivElements = LKSLib.SearchElementsHasStyles("div", [["border-top-style", "solid"], ["box-sizing", "border-box"], ["word-break", "break-all"], ["background-origin", "padding-box"], ["background-size", "auto"]]);
+                        var DivElements = LKSLib.SearchElementsHasComputedStyles("div", [["border-top-style", "solid"], ["box-sizing", "border-box"], ["word-break", "break-all"], ["background-origin", "padding-box"], ["background-size", "auto"]]);
                         LKSLib.HideElements([DivElements[DivElements.length - 1]]);
                         LKSLib.window.console.log(DivElements[DivElements.length - 1]);
                     }
