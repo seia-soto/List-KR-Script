@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d7
+// @version      2.0d8
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -18,6 +18,12 @@
 // @match        *://ad-shield.io/*
 // @match        *://sports.donga.com/*
 // @match        *://mlbpark.donga.com/*
+// @match        *://etoland.co.kr/*
+// @match        *://*.etoland.co.kr/*
+// @match        *://*.op.gg/*
+// @exclude      *://member.op.gg/*
+// @exclude      *://etoland.co.kr/bbs/register.php
+// @exclude      *://etoland.co.kr/bbs/password_lost.php
 // @exclude      *://secure.donga.com/*
 // @exclude      *://member.inven.co.kr/*
 // @exclude      *://namu.wiki/member/login?*
