@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d8
+// @version      2.0d9
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -60,7 +60,8 @@ const LKSConstant =
     },
     NamuWiki:
     {
-        ArticleElementArray: ["div.wiki-paragraph", "div.wiki-heading-content", "div.namuwiki-toc-ad", ".wiki-heading"], 
+        ArticleElementArray: ["div.wiki-paragraph", "div.wiki-heading-content", "div.namuwiki-toc-ad", ".wiki-heading"],
+        CategoryElementArray: ["div[class]#category-문서"],
         PowerLink:
         {
             HeaderAddressArray: [/data:image\//g, /\/\/w.namu.la\/s\//g]
@@ -68,7 +69,7 @@ const LKSConstant =
     },
     AdShield:
     {
-
+        AppliedURLs: [/:\/\/etoland\.co\.kr\//g, /:\/\/[\w\d.]{1,}\.etoland\.co\.kr\//g, /:\/\/[\w\d.]{1,}\.op\.gg\//g, /:\/\/ppss\.kr\//g, /:\/\/ygosu\.com\//g, /:\/\/ad-shield\.io\//g, /:\/\/sports\.donga\.com\//g, /:\/\/mlbpark\.donga\.com\//g]
     },
     Random:
     {
@@ -425,53 +426,44 @@ LKSLib.ReleaseMemory = function(VariableArray) // To clear the variables, conver
 // ######################################################################################
 // ######################################################################################
 
-switch (true)
+// namu.wiki
+if (/:\/\/namu\.wiki\/w\//g.test(LKSLib.location))
 {
-    // namu.wiki
-    case /:\/\/namu\.wiki\/w\//g.test(LKSLib.location):
-        var ArticleTopElement;
-        var Watch = function(MutationList, Observer)
+    var ArticleTopElement;
+    var Watch = function(MutationList, Observer)
+    {
+        for(var Mutation of MutationList)
         {
-            for(var Mutation of MutationList)
+            for (var i in Array.from(Mutation.target.attributes))
             {
-                for (var i in Array.from(Mutation.target.attributes))
+                if (Array.from(Mutation.target.attributes)[i].name == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element.test(Array.from(Mutation.target.attributes)[i].nodeValue) == true) != undefined)
                 {
-                    if (Array.from(Mutation.target.attributes)[i].name == "src" && LKSConstant.NamuWiki.PowerLink.HeaderAddressArray.find(element => element.test(Array.from(Mutation.target.attributes)[i].nodeValue) == true) != undefined)
-                    {
-                        var DivElements = LKSLib.SearchElementsHasComputedStyles("div", [["border-top-style", "solid"], ["box-sizing", "border-box"], ["word-break", "break-all"], ["background-origin", "padding-box"], ["background-size", "auto"]]);
-                        LKSLib.HideElements([DivElements[DivElements.length - 1]]);
-                        LKSLib.window.console.log(DivElements[DivElements.length - 1]);
-                    }
+                    var DivElements = LKSLib.SearchElementsHasComputedStyles("div", [["border-top-style", "solid"], ["box-sizing", "border-box"], ["word-break", "break-all"], ["background-origin", "padding-box"], ["background-size", "auto"]]);
+                    LKSLib.HideElements([DivElements[DivElements.length - 1]]);
+                    LKSLib.window.console.log(DivElements[DivElements.length - 1]);
                 }
             }
-        };
-        var func = function ()
-        {
-            for (var i in Array.from(LKSLib.window.document.querySelectorAll("img")))
-            {
-                new LKSLib.MutationObserver(Watch).observe(Array.from(document.querySelectorAll("img"))[i], {attributes: true});
-            }
-        };
-        if (LKSLib.window.document.addEventListener)
-        {
-            LKSLib.window.document.addEventListener("DOMContentLoaded", func);
-            LKSLib.window.document.addEventListener("hashchange", func);
         }
-    break;
+    };
+    var func = function ()
+    {
+        for (var i in Array.from(LKSLib.window.document.querySelectorAll("img")))
+        {
+            new LKSLib.MutationObserver(Watch).observe(Array.from(document.querySelectorAll("img"))[i], {attributes: true});
+        }
+    };
+    if (LKSLib.window.document.addEventListener)
+    {
+        LKSLib.window.document.addEventListener("DOMContentLoaded", func);
+        LKSLib.window.document.addEventListener("hashchange", func);
+    }
+}
 
-    // inven.co.kr
-    case /:\/\/.{1,}\.inven\.co\.kr\//g.test(LKSLib.location):
+// Ad-Shield
 
-    break;
+if (function() { for (var i in LKSConstant.AdShield.AppliedURLs) { if (LKSConstant.AdShield.AppliedURLs[i].test(LKSLib.location)) { return true; } } return false; })
+{
 
-    // ygosu.com
-    case /:\/\/ygosu\.com\//g.test(LKSLib.location):
+}
 
-    break;
-
-    // ppss.kr
-    case /:\/\/ppss\.kr\/"/g.test(LKSLib.location):
-
-    break;
-};
 })();
