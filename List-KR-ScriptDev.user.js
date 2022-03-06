@@ -60,7 +60,7 @@ const LKSConstant =
     },
     NamuWiki:
     {
-        ArticleElementArray: ["div.wiki-paragraph", "div.wiki-heading-content", "div.namuwiki-toc-ad", ".wiki-heading"],
+        ArticleElementArray: ["div.wiki-paragraph", "div.namuwiki-toc-ad"],
         CategoryElementArray: ["div[class]#category-문서"],
         PowerLink:
         {
