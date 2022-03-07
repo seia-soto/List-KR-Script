@@ -94,7 +94,7 @@ LKSLib.GenerateRandom = function(BaseString, Length)
 {
     if (typeof length == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.GenerateRandom", "Received Length, but not an number.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.GenerateRandom: Received Length, but not an number.");
     }
     var Returns;
     for (var i = 0; i < Length; i++)
@@ -107,7 +107,7 @@ LKSLib.CheckElementHasComputedStyle = function(Elementv, HasStyle)
 {
     if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyle", "Received Elementv, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]]", "LKSLib.CheckElementHasStyle: Received Elementv, but not an object.");
     }
     if (LKSLib.window.getComputedStyle(Elementv).getPropertyValue(HasStyle[0]) == HasStyle[1])
     {
@@ -122,7 +122,7 @@ LKSLib.CheckElementHasComputedStyles = function(Elementv, HasStyleArray)
 {
     if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasStyles", "Received Elementv, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckElementHasStyles: Received Elementv, but not an object.");
     }
     for (var i in HasStyleArray)
     {
@@ -183,7 +183,7 @@ LKSLib.CheckElementHasOnlyStyle = function(Elementv, HasStyle)
 {
     if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasOnlyStyle", "Received Elementv, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckElementHasOnlyStyle: Received Elementv, but not an object.");
     }
     if (Elementv.style[HasStyle[0]] == HasStyle[1])
     {
@@ -198,7 +198,7 @@ LKSLib.CheckElementHasOnlyStyles = function(Elementv, HasStyleArray)
 {
     if (NodeList.prototype.isPrototypeOf(Elementv) || Array.isArray(Elementv) || typeof Elementv == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckElementHasOnlyStyles", "Received Elementv, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckElementHasOnlyStyles: Received Elementv, but not an object.");
     }
     for (var i in HasStyleArray)
     {
@@ -259,15 +259,15 @@ LKSLib.CheckHasElement = function(ParentElement, TargetElement, Depth) // null m
 {
     if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasElement", "Received ParentElement, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasElement: Received ParentElement, but not an object.");
     }
     if (NodeList.prototype.isPrototypeOf(TargetElement) || Array.isArray(TargetElement) || typeof TargetElement == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasElement", "Received TargetElement, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasElement: Received TargetElement, but not an object.");
     }
     if (Depth != null || typeof Depth != "number")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasElement", "Received Depth, but not a number or null.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasElement: Received Depth, but not a number or null.");
     }
     var ReturnArray = [ParentElement];
     Depth = Depth == null ? Number.MAX_SAFE_INTEGER : Depth;
@@ -291,15 +291,15 @@ LKSLib.CheckHasAncestorElement = function(TargetElement, ParentElement, Depth)
 {
     if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received ParentElement, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]]", "LKSLib.CheckHasAncestorElement: Received ParentElement, but not an object.");
     }
     if (NodeList.prototype.isPrototypeOf(TargetElement) || Array.isArray(TargetElement) || typeof TargetElement == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received TargetElement, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasAncestorElement: Received TargetElement, but not an object.");
     }
     if (Depth != null && typeof Depth != "number")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasAncestorElement", "Received Depth, but not a number or null.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasAncestorElement: Received Depth, but not a number or null.");
     }
     var ReturnArray = [ParentElement];
     Depth = Depth == null ? Number.MAX_SAFE_INTEGER : Depth;
@@ -324,15 +324,15 @@ LKSLib.CheckHasGenerationElement = function(BaseElement, TargetElement)
 {
     if (NodeList.prototype.isPrototypeOf(BaseElement) || Array.isArray(BaseElement) || typeof BaseElement == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasGenerationElement", "Received BaseElement, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasGenerationElement: Received BaseElement, but not an object.");
     }
     if (NodeList.prototype.isPrototypeOf(TargetElement) || Array.isArray(TargetElement) || typeof TargetElement == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasGenerationElement", "Received TargetElement, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasGenerationElement: Received TargetElement, but not an object.");
     }
     if (BaseElement.parentNode.URL != undefined)
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CheckHasGenerationElement", "Received BaseElement, but html.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CheckHasGenerationElement: Received BaseElement, but html.");
     }
     if (Array.from(BaseElement.parentNode.childNodes).find(element => element == TargetElement) != undefined)
     {
@@ -347,7 +347,7 @@ LKSLib.HideElements = function(ElementArray)
 {
     if (!Array.isArray(ElementArray))
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.HideElements", "Received ElementArray, but not an array.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.HideElements: Received ElementArray, but not an array.");
     }
     for (var i in ElementArray)
     {
@@ -358,7 +358,7 @@ LKSLib.CreateInvisibleElement = function(ParentElement, CoverElementsArray, IDLe
 {
     if (NodeList.prototype.isPrototypeOf(ParentElement) || Array.isArray(ParentElement) || typeof ParentElement == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CreateInvisibleElement", "Received ParentElement, but not an object.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CreateInvisibleElement: Received ParentElement, but not an object.");
     }
     if (NodeList.prototype.isPrototypeOf(CoverElementsArray))
     {
@@ -366,7 +366,7 @@ LKSLib.CreateInvisibleElement = function(ParentElement, CoverElementsArray, IDLe
     }
     else if (typeof CoverElementsArray == "string")
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.CreateInvisibleElement", "Received ParentElement, but not an array or NodeList.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.CreateInvisibleElement: Received ParentElement, but not an array or NodeList.");
     }
     var RandomElement = ParentElement.createElement("div#" + LKSLib.GenerateRandom(LKSConstant.Random, IDLength));
     for (var i in LKSConstant.CreateInvisibleElement.Styles)
@@ -408,7 +408,7 @@ LKSLib.ReleaseMemory = function(VariableArray) // To clear the variables, conver
 {
     if (VariableArray == undefined || VariableArray == null)
     {
-        LKSDebug.Error("LISTKRSCRIPT.LKSLib.ReleaseMemory", "Received variableArray, but undefined or null.");
+        LKSDebug.Error("[LISTKRSCRIPT ERROR]", "LKSLib.ReleaseMemory: Received variableArray, but undefined or null.");
     }
     if (Array.isArray(VariableArray))
     {
