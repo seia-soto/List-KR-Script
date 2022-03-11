@@ -8,7 +8,7 @@
 // @downloadURL  https://github.com/List-KR/List-KR-Script/raw/master/List-KR-ScriptDev.user.js
 // @license      MPL-2.0
 //
-// @version      2.0d9
+// @version      2.0d10
 // @author       PiQuark6046 and contributors
 //
 // @match        *://namu.wiki/w/*
@@ -21,6 +21,8 @@
 // @match        *://etoland.co.kr/*
 // @match        *://*.etoland.co.kr/*
 // @match        *://*.op.gg/*
+// @match        *://tgd.kr/*
+// @exclude      *://tgd.kr/member/login_page*
 // @exclude      *://member.op.gg/*
 // @exclude      *://etoland.co.kr/bbs/register.php
 // @exclude      *://etoland.co.kr/bbs/password_lost.php
@@ -69,7 +71,7 @@ const LKSConstant =
     },
     AdShield:
     {
-        AppliedURLs: [/:\/\/etoland\.co\.kr\//g, /:\/\/[\w\d.]{1,}\.etoland\.co\.kr\//g, /:\/\/[\w\d.]{1,}\.op\.gg\//g, /:\/\/ppss\.kr\//g, /:\/\/ygosu\.com\//g, /:\/\/ad-shield\.io\//g, /:\/\/sports\.donga\.com\//g, /:\/\/mlbpark\.donga\.com\//g]
+        AppliedURLs: [/:\/\/tgd\.kr\//g, /:\/\/etoland\.co\.kr\//g, /:\/\/[\w\d.]{1,}\.etoland\.co\.kr\//g, /:\/\/[\w\d.]{1,}\.op\.gg\//g, /:\/\/ppss\.kr\//g, /:\/\/ygosu\.com\//g, /:\/\/ad-shield\.io\//g, /:\/\/sports\.donga\.com\//g, /:\/\/mlbpark\.donga\.com\//g]
     },
     Random:
     {
