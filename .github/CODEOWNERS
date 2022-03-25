@@ -5,6 +5,6 @@
 
 # Common Protection
 /.github/CODEOWNERS                       @piquark6046 @Raiden-Ei
-/List-KR-Script.user.js                   @piquark6046 @Raiden-Ei
+/List-KR-Script.user.js                   @piquark6046 @Raiden-Ei @seia-soto
 /LICENSE                                  @piquark6046 @Raiden-Ei
 /README.md                                @piquark6046 @Raiden-Ei
