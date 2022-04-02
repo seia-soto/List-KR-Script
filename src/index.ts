@@ -1,5 +1,7 @@
+import * as fs from 'fs/promises';
 import * as constants from './constants.js';
 import * as loader from './loader.js';
+import * as transform from './transform.js';
 
 const main = async () => {
   /**
@@ -18,11 +20,23 @@ const main = async () => {
     const file = files[i];
     const [type, ...data] = file.split('/').pop()?.split('.').slice(1) ?? [];
     // Note that .pop() function removes the item from original array.
+    const buffer = await fs.readFile(file);
+    const content = buffer.toString();
     const extension = data.pop() ?? '';
 
-    console.log(await loader.readScriptAt(file));
+    /**
+     * Transform and parse the script.
+     */
+    const transformed = await transform.auto(
+      content,
+      extension,
+    );
+    const snippet = await loader.readScript(transformed.code);
 
-    console.log(`extension: ${extension}`);
+    console.log(snippet);
+    console.log(
+      transformed.code.slice(snippet.fn.declaration.start, snippet.fn.declaration.end),
+    );
 
     switch (type) {
       /**

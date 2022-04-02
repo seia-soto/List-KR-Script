@@ -2,7 +2,6 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import * as acorn from 'acorn';
 import * as walk from 'acorn-walk';
-import { existsSync } from 'fs';
 
 export namespace utils {
   /**
@@ -48,7 +47,8 @@ export namespace utils {
 /* eslint-disable no-unused-vars */
 export enum ENodeTypes {
   Identifier = 'Identifier',
-  BlockStatement = 'BlockStatement'
+  BlockStatement = 'BlockStatement',
+  ExportNamedDeclaration = 'ExportNamedDeclaration'
 }
 /* eslint-enable no-unused-vars */
 
@@ -65,9 +65,14 @@ export interface IBlockStatementNode extends IGeneralNode {
   type: ENodeTypes.BlockStatement
 }
 
+export interface IExportNamedDeclarationNode extends IGeneralNode {
+  type: ENodeTypes.ExportNamedDeclaration
+}
+
 export type TNode =
   IIdentifierNode |
   IBlockStatementNode |
+  IExportNamedDeclarationNode |
   IGeneralNode
 
 export type Node = TNode
@@ -75,16 +80,9 @@ export type Node = TNode
 /**
  * Reads the metadata and an actual script content
  *
- * @param location The location of the script file
+ * @param content The content of the script file
  */
-export const readScriptAt = async (location: string) => {
-  if (!existsSync(location)) {
-    throw new Error(`Loader failed to read the script file at location: ${location}`);
-  }
-
-  const buffer = await fs.readFile(location);
-  const content = buffer.toString();
-
+export const readScript = async (content: string) => {
   const matters: string[][] = [];
 
   const tree = acorn.parse(content, {
@@ -137,9 +135,17 @@ export const readScriptAt = async (location: string) => {
    * Instead of defining two variable using `let`,
    * it's better to have a form for cleaner code.
    */
-  const innerFunction = {
-    start: 0,
-    end: 0,
+  const fn = {
+    declaration: {
+      startExport: 0,
+      startDeclaration: 0,
+      start: 0,
+      end: 0,
+    },
+    body: {
+      start: 0,
+      end: 0,
+    },
     isIdentifierFound: false,
   };
 
@@ -164,7 +170,27 @@ export const readScriptAt = async (location: string) => {
      * @returns True if wanted node found
      */
     (nodeType, node) => {
+      console.log(nodeType, node.type, content.slice(node.start, node.end));
+
       switch (node.type) {
+        case ENodeTypes.ExportNamedDeclaration: {
+          const aNode = node as IExportNamedDeclarationNode;
+
+          if (!fn.declaration.start) {
+            // The original start point.
+            fn.declaration.startExport = aNode.start;
+            // The start point after: export
+            fn.declaration.startDeclaration = aNode.start + 'export '.length;
+            // The start point after: export [var|let|const] =
+            fn.declaration.start = content.indexOf('=', aNode.start) + 1;
+            fn.declaration.end = aNode.end;
+          }
+
+          /**
+           * The ExportNamedDeclaration comes last.
+           */
+          return true;
+        }
         case ENodeTypes.Identifier: {
           /**
            * Additional work is required for better approach than current one.
@@ -184,7 +210,7 @@ export const readScriptAt = async (location: string) => {
            * e.g. export const "script" = () => {}
            */
           if (aNode.name === 'script') {
-            innerFunction.isIdentifierFound = true;
+            fn.isIdentifierFound = true;
           }
 
           return false;
@@ -195,7 +221,7 @@ export const readScriptAt = async (location: string) => {
           /**
            * Assume when we have the flag set.
            */
-          if (!innerFunction.isIdentifierFound) {
+          if (!fn.isIdentifierFound) {
             return false;
           }
 
@@ -207,21 +233,37 @@ export const readScriptAt = async (location: string) => {
            * By doing + 1 and - 1 will result to extract:
            * export const "script" = () => {" console.log('sample') "}
            */
-          innerFunction.start = aNode.start + 1;
-          innerFunction.end = aNode.end - 1;
+          fn.body.start = aNode.start + 1;
+          fn.body.end = aNode.end - 1;
 
-          return true;
-        }
-        default: {
           return false;
         }
+        default: {
+          break;
+        }
       }
+
+      return false;
     },
   );
 
   return {
     matters,
-    script: content.slice(innerFunction.start, innerFunction.end),
-    innerFunction,
+    content,
+    fn,
   };
+};
+
+/**
+ * Reads the metadata and an actual script content from file
+ *
+ * @param location The location of the script file
+ */
+export const readScriptAt = async (location: string) => {
+  const buffer = await fs.readFile(location);
+  const content = buffer.toString();
+
+  const result = await readScript(content);
+
+  return result;
 };
