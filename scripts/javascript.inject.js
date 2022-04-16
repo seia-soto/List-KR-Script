@@ -1,9 +1,8 @@
 /**
- * @name test
  * @match http://example.com/
  *
- * @include sample
+ * @include sample_js
  */
-export const script = () => {
+export const script = (deps) => {
   console.log('test');
 };

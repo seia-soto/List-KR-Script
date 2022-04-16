@@ -1,7 +1,8 @@
-import * as fs from 'fs/promises';
 import * as constants from './constants.js';
+import * as compiler from './compiler.js';
 import * as loader from './loader.js';
 import * as transform from './transform.js';
+import * as utils from './utils.js';
 
 const main = async () => {
   /**
@@ -11,54 +12,63 @@ const main = async () => {
    *      e.g. script.inject.dev.js
    * - List-KR specific snippets (ends with .lib.js)
    */
-  const files = await loader.utils.readDirRecursively(constants.directories.scripts);
+  const files = await utils.fileSystem.readDirRecursively(constants.directories.scripts);
+  const fragments = {
+    pre: '',
+    libraries: '',
+    scripts: '',
+    post: '',
+  };
 
   for (let i = 0, l = files.length; i < l; i += 1) {
-    /**
-     * Logically, the variables `type` and `extension` are ensured.
-     */
-    const file = files[i];
-    const [type, ...data] = file.split('/').pop()?.split('.').slice(1) ?? [];
-    // Note that .pop() function removes the item from original array.
-    const buffer = await fs.readFile(file);
-    const content = buffer.toString();
-    const extension = data.pop() ?? '';
+    const file = await utils.fileSystem.exportDataFromFilename(files[i]);
+    const content = await utils.fileSystem.readFile(files[i]);
 
     /**
      * Transform and parse the script.
      */
     const transformed = await transform.auto(
       content,
-      extension,
+      file.extension,
     );
-    const snippet = await loader.readScript(transformed.code);
+    const snippet = await loader.read(transformed.code);
 
-    console.log(snippet);
-    console.log(
-      transformed.code.slice(snippet.fn.declaration.start, snippet.fn.declaration.end),
-    );
+    const [type, stage] = file.data;
 
     switch (type) {
-      /**
-       * In case of injectable script.
-       */
-      case 'inject': {
-        // In case of parsing additional data contained in extension.
-        if (data.length) {
-          const [stage] = data;
-
-          console.log(`stage: ${stage}`);
+      case 'lib': {
+        if (stage === 'independent') {
+          /**
+           * Independent libraries can be included by later dependent (common) libraries.
+           * So, we need to put this at the top of the file.
+           */
+          fragments.pre += `const lib__${file.name}=${compiler.snippets.generateClosure(snippet)};\n`;
+        } else {
+          fragments.libraries += `const lib__${file.name}=${compiler.snippets.generateClosure(
+            snippet,
+            // We assume that all libraries required are type of independent library.
+            compiler.snippets.getDependenciesObjectStringFromSnippet(snippet.matters),
+          )};\n`;
         }
 
         break;
       }
-      default: {
-        console.warn(`We found an unknown script file at ${file}`);
+      case 'inject': {
+        // TODO: Add separate executor code by domain match.
+        fragments.scripts += `${compiler.snippets.generateIife(
+          snippet,
+          compiler.snippets.getDependenciesObjectStringFromSnippet(snippet.matters),
+        )};\n`;
 
+        break;
+      }
+      default: {
         break;
       }
     }
   }
+
+  console.log(Object.values(fragments).join('\n'));
 };
 
 main();

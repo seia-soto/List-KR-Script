@@ -15,10 +15,7 @@ export const typescript = async (code: string) => {
         },
         target: 'es5',
         keepClassNames: true,
-        loose: true,
-      },
-      module: {
-        type: 'es6',
+        loose: false,
       },
     });
 
@@ -26,11 +23,17 @@ export const typescript = async (code: string) => {
 };
 
 export const auto = async (code: string, extension: string) => {
-  let result = { code };
+  let result = {
+    provider: 'none',
+    code,
+  };
 
   switch (extension) {
     case 'ts': {
-      result = await typescript(code);
+      result = {
+        provider: 'typescript',
+        ...await typescript(code),
+      };
 
       break;
     }
