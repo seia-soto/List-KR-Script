@@ -1,5 +1,7 @@
 import { sampleAsyncTs } from './sample_async_ts.lib.independent';
 
+const log = (message: any) => console.log(message);
+
 /**
  * @match http://example.com/
  *
@@ -11,6 +13,6 @@ export const script = (
     sample_async_ts: ReturnType<typeof sampleAsyncTs>
   },
 ) => {
-  console.log('test');
-  console.log(deps);
+  log('test');
+  log(deps);
 };
