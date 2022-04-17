@@ -68,7 +68,16 @@ const main = async () => {
     }
   }
 
-  console.log(Object.values(fragments).join('\n'));
+  console.log(
+    (
+      await transform.result(
+        Object
+          .values(fragments)
+          .join('\n'),
+      )
+    )
+      .code,
+  );
 };
 
 main();

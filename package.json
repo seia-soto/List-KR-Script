@@ -36,6 +36,7 @@
   "dependencies": {
     "@swc/core": "^1.2.165",
     "@swc/core-linux-musl": "^1.2.42",
-    "acorn": "^8.7.0"
+    "acorn": "^8.7.0",
+    "acorn-walk": "^8.2.0"
   }
 }

@@ -1,6 +1,6 @@
 /**
- * @name sample
+ * @entrypoint sampleTs
  */
-export const script = (deps: unknown) => {
+export const sampleTs = (deps: unknown) => {
   return deps;
 };

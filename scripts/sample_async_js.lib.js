@@ -1,6 +1,6 @@
 /**
- * @name sample
+ * @entrypoint sampleAsync
  */
-export const script = async (deps) => {
+export const sampleAsync = async (deps) => {
   return deps;
 };

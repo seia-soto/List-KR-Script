@@ -13,7 +13,7 @@ export const typescript = async (code: string) => {
           legacyDecorator: true,
           decoratorMetadata: true,
         },
-        target: 'es5',
+        target: 'es2022',
         keepClassNames: true,
         loose: false,
       },
@@ -31,11 +31,34 @@ export const javascript = async (code: string) => {
         parser: {
           syntax: 'ecmascript',
         },
-        transform: {
-          legacyDecorator: true,
-          decoratorMetadata: true,
+        transform: {},
+        target: 'es2022',
+        keepClassNames: true,
+        loose: false,
+      },
+    });
+
+  return output;
+};
+
+export const result = async (code: string) => {
+  const output = await swc
+    .transform(code, {
+      sourceMaps: true,
+      isModule: true,
+      minify: true,
+      jsc: {
+        parser: {
+          syntax: 'ecmascript',
         },
-        target: 'es5',
+        transform: {},
+        minify: {
+          compress: {
+            unused: true,
+          },
+          mangle: true,
+        },
+        target: 'es2015',
         keepClassNames: true,
         loose: false,
       },

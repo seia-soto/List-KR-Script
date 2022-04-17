@@ -1,5 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import { TSnippetMatter } from './types.js';
 
 export namespace fileSystem {
   /**
@@ -61,5 +62,13 @@ export namespace fileSystem {
       extension,
       data,
     };
+  };
+}
+
+export namespace snippets {
+  export const findMatterByName = (matters: TSnippetMatter[], name: string) => {
+    return matters
+      .filter((matter) => matter[0] === name)
+      .map((matter) => matter[1]);
   };
 }

@@ -1,4 +1,5 @@
-import { read } from './loader';
+import * as utils from './utils.js';
+import { ISnippet, TSnippetMatter } from './types.js';
 
 export namespace userscript {
   /**
@@ -28,8 +29,6 @@ export namespace userscript {
 }
 
 export namespace snippets {
-  export type TSnippet = Awaited<ReturnType<typeof read>>
-
   /**
    * Generate IIFE code with arguments
    *
@@ -37,8 +36,13 @@ export namespace snippets {
    * @param dependencies Additional dependencies in stringified form
    * @returns The IIFE form of code with dependencies included
    */
-  export const generateIife = (snippet: TSnippet, dependencies: string = '') => {
-    return `(${snippet.fn.isAsync ? 'async ' : ''}function(${snippet.fn.argument}){${snippet.fn.body}})(${dependencies})`;
+  export const generateIife = (snippet: ISnippet, dependencies: string = '') => {
+    const name = utils.snippets.findMatterByName(snippet.matters, 'entrypoint')[0] || 'script';
+
+    return `(function(){${
+      snippet.code.slice(0, snippet.fn.declaration.startExport)
+    + snippet.code.slice(snippet.fn.declaration.startDeclaration)
+    }return ${name}(${dependencies})})()`;
   };
 
   /**
@@ -48,10 +52,10 @@ export namespace snippets {
    * @param dependencies Additional dependencies in stringified form
    * @returns The string contains closure that passes dependencies as first argument
    */
-  export const generateClosure = (snippet: TSnippet, dependencies: string = '') => {
+  export const generateClosure = (snippet: ISnippet, dependencies: string = '') => {
     const innerDependencies = `${dependencies}${dependencies.length ? ',' : ''}...__args`;
 
-    return `${snippet.fn.isAsync ? 'async ' : ''}function(...__args){return ${snippets.generateIife(snippet, innerDependencies)}}`;
+    return `function(...__args){return ${snippets.generateIife(snippet, innerDependencies)}}`;
   };
 
   /**
@@ -60,7 +64,7 @@ export namespace snippets {
    * @param matters The matters object extracted from comment of the script
    * @returns String representating object code containing required dependencies
    */
-  export const getDependenciesObjectStringFromSnippet = (matters: TSnippet['matters']) => {
+  export const getDependenciesObjectStringFromSnippet = (matters: TSnippetMatter[]) => {
     return `{${matters
       .filter((matter) => matter[0] === 'include')
       .map((matter) => `${matter[1]}:lib__${matter[1]}`)
