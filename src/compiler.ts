@@ -38,7 +38,7 @@ export namespace snippets {
    * @returns The IIFE form of code with dependencies included
    */
   export const generateIife = (snippet: TSnippet, dependencies: string = '') => {
-    return `(function(${snippet.fn.argument}){${snippet.fn.body}})(${dependencies})`;
+    return `(${snippet.fn.isAsync ? 'async ' : ''}function(${snippet.fn.argument}){${snippet.fn.body}})(${dependencies})`;
   };
 
   /**
@@ -51,7 +51,7 @@ export namespace snippets {
   export const generateClosure = (snippet: TSnippet, dependencies: string = '') => {
     const innerDependencies = `${dependencies}${dependencies.length ? ',' : ''}...__args`;
 
-    return `function(...__args){return ${snippets.generateIife(snippet, innerDependencies)}}`;
+    return `${snippet.fn.isAsync ? 'async ' : ''}function(...__args){return ${snippets.generateIife(snippet, innerDependencies)}}`;
   };
 
   /**

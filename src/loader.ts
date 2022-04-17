@@ -2,19 +2,21 @@ import * as acorn from 'acorn';
 import * as utils from './utils.js';
 
 export const getFunctionProperties = async (code: string) => {
-  const pattern = /(?:function[\w\s ]*?\(([\s\w ,:]*?)\)|\(([\s\w ,:]*?)\)[\s ]*?=>)[\s ]*?{([\s\S]*?)};?\s*?$/gi;
+  const pattern = /(async\s*?)?(?:function[\w\s ]*?\(([\s\w ,:]*?)\)|\(([\s\w ,:]*?)\)[\s ]*?=>)[\s ]*?{([\s\S]*?)};?\s*?$/gi;
   const result = pattern.exec(code);
 
   if (!result) {
     return {
       argument: '',
       body: '',
+      isAsync: false,
     };
   }
 
   return {
-    argument: result[1] || result[2],
-    body: result[3],
+    argument: result[2] || result[3],
+    body: result[4].trim(),
+    isAsync: !!result[1],
   };
 };
 
